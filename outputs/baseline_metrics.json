@@ -1,0 +1,91 @@
+{
+  "data_path": "C:\\Users\\jorda\\Documents\\Codex\\2026-04-22-files-mentioned-by-the-user-final\\capstone_390-main\\data\\raw\\final_matches_distance.csv",
+  "split_counts": {
+    "test": 760,
+    "train": 2280,
+    "validation": 760
+  },
+  "primary_target": "xg",
+  "primary_metric": "rmse",
+  "runtime_budget_seconds": 60.0,
+  "models": {},
+  "targets": {
+    "xg": {
+      "baseline_home_away": {
+        "validation_metrics": {
+          "rmse": 0.9645174755400544,
+          "mae": 0.7206482921844488,
+          "mse": 0.9302939606221595,
+          "r2": -0.1725098267008327
+        },
+        "coefficient_summary": {
+          "target": "xg",
+          "home_effect_xg_units": 0.22771929824561266
+        }
+      },
+      "home_away_plus_travel": {
+        "validation_metrics": {
+          "rmse": 0.9695596666566408,
+          "mae": 0.724665590956338,
+          "mse": 0.9400459472073365,
+          "r2": -0.18480088800507644
+        },
+        "coefficient_summary": {
+          "target": "xg",
+          "home_effect_xg_units": 0.17782548200343462,
+          "travel_effect_per_100_miles_xg_units": -0.045217242743549324,
+          "average_away_distance_miles": 108.65894736842105,
+          "travel_effect_at_average_away_trip_xg_units": -0.04913257999416445
+        }
+      },
+      "travel_vs_baseline_significance": {
+        "mean_loss_improvement": -0.009751986585176986,
+        "direction": "worsens",
+        "ci_95_low": -0.012711872562180104,
+        "ci_95_high": -0.006790264432344408,
+        "p_value_two_sided": 0.0001999600079984003,
+        "permutation_draws": 5000
+      }
+    },
+    "xga": {
+      "baseline_home_away": {
+        "validation_metrics": {
+          "rmse": 0.9957705391611545,
+          "mae": 0.7471818113037481,
+          "mse": 0.9915589666612964,
+          "r2": -0.24972608807023144
+        },
+        "coefficient_summary": {
+          "target": "xga",
+          "home_effect_xg_units": -0.22771929824561415
+        }
+      },
+      "home_away_plus_travel": {
+        "validation_metrics": {
+          "rmse": 0.9879629946605903,
+          "mae": 0.7402732846087199,
+          "mse": 0.9760708788187216,
+          "r2": -0.2302054462506502
+        },
+        "coefficient_summary": {
+          "target": "xga",
+          "home_effect_xg_units": -0.17187954909547282,
+          "travel_effect_per_100_miles_xg_units": 0.05060586024939946,
+          "average_away_distance_miles": 108.65894736842105,
+          "travel_effect_at_average_away_trip_xg_units": 0.05498779505373167
+        }
+      },
+      "travel_vs_baseline_significance": {
+        "mean_loss_improvement": 0.015488087842574825,
+        "direction": "improves",
+        "ci_95_low": 0.011753067296391544,
+        "ci_95_high": 0.019366284692380525,
+        "p_value_two_sided": 0.0001999600079984003,
+        "permutation_draws": 5000
+      }
+    }
+  },
+  "test_set_policy": "Season 2025 is locked as the final test set and is not used for fitting or model selection in this baseline run.",
+  "runtime_seconds": 0.32110970000212546,
+  "within_runtime_budget": true
+}
