@@ -82,4 +82,3 @@ From the latest run on the fixed 2024 validation season:
 - runtime: about `0.30` seconds with a fixed `60` second budget
 
 See `outputs/baseline_metrics.json` for the full saved metrics.
-
