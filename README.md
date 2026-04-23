@@ -84,18 +84,3 @@ From the latest run on the fixed 2024 validation season:
 - runtime: about `0.30` seconds with a fixed `60` second budget
 
 See `outputs/baseline_metrics.json` for the full saved metrics.
-
-## Week-2 deliverables
-
-- Working baseline: complete
-- Working end-to-end baseline run: complete
-- Fixed metric: complete
-- Fixed validation metric: complete
-- Locked test set plan: complete
-- README with reproducible instructions: complete
-- First experiment log entry: complete
-- Runtime budget for one iteration: complete
-
-## GitHub note
-
-The project files are prepared locally inside this repository snapshot. If you want the remote GitHub repo updated from this environment, I’ll need either a working local `git` setup in the thread or a workflow you want me to follow for uploading changes.
