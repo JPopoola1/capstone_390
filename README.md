@@ -2,8 +2,6 @@
 
 Quantify how important playing at home versus away is, including the travel distance to the away stadium. The main outcome is team attacking performance measured by expected goals (`xG`).
 
-This repository now includes a reproducible week-2 baseline for the research question:
-
 How does travel distance affect a soccer team's offensive and defensive performance when measured by expected goals?
 
 ## Repository contents
@@ -85,17 +83,3 @@ From the latest run on the fixed 2024 validation season:
 
 See `outputs/baseline_metrics.json` for the full saved metrics.
 
-## Week-2 deliverables
-
-- Working baseline: complete
-- Working end-to-end baseline run: complete
-- Fixed metric: complete
-- Fixed validation metric: complete
-- Locked test set plan: complete
-- README with reproducible instructions: complete
-- First experiment log entry: complete
-- Runtime budget for one iteration: complete
-
-## GitHub note
-
-The project files are prepared locally inside this repository snapshot. If you want the remote GitHub repo updated from this environment, I’ll need either a working local `git` setup in the thread or a workflow you want me to follow for uploading changes.
