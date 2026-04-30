@@ -1,3 +1,9 @@
+"""
+This file defines data preparation utilities.
+It does NOT run experiments or produce outputs when executed directly.
+"""
+
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -14,6 +20,7 @@ SPLIT_MAP = {
     2024: "validation",
     2025: "test",
 }
+
 
 
 def load_data(csv_path: Path) -> pd.DataFrame:
@@ -83,3 +90,13 @@ def align_columns(
         for other in other_frames
     ]
     return train_frame[train_columns], aligned
+
+if __name__ == "__main__":
+    input_path = Path("data/raw/final_matches_distance.csv")
+    output_path = Path("data/processed.csv")
+
+    df = load_data(input_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    df.to_csv(output_path, index=False)
+
+    print(f"Saved processed data to {output_path}")

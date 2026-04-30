@@ -8,9 +8,11 @@ import pandas as pd
 
 from prepare import load_data, build_design_matrix, align_columns
 
-
+BASE_DIR = Path(__file__).resolve().parent
+DATA_PATH = BASE_DIR / "data" / "processed.csv"
+RESULTS_PATH = BASE_DIR / "results.tsv"
 PRIMARY_TARGET = "xg"
-RESULTS_PATH = Path("results.tsv")
+# RESULTS_PATH = Path("results.tsv")
 
 
 def get_git_hash():
@@ -44,6 +46,16 @@ def log_result(commit, rmse, r2, status, description):
     with open(RESULTS_PATH, "a") as f:
         f.write(row)
 
+def get_best_rmse():
+    if not RESULTS_PATH.exists():
+        return None
+
+    df = pd.read_csv(RESULTS_PATH, sep="\t")
+    if df.empty:
+        return None
+
+    return df["rmse"].min()
+
 
 def main():
     args = sys.argv[1:]
@@ -61,7 +73,7 @@ def main():
     description = " ".join(description_parts) if description_parts else "experiment"
 
     # 1️⃣ Load data
-    data_path = Path("data/processed.csv")  # <-- adjust if needed
+    data_path = DATA_PATH  # <-- adjust if needed
     frame = load_data(data_path)
 
     train = frame["split"] == "train"
@@ -96,9 +108,24 @@ def main():
     print(f"val_r2:   {val_r2:.6f}")
 
     # 5️⃣ Log
+    best_rmse = get_best_rmse()
+
+    if "--baseline" in args:
+        status = "baseline"
+    elif "--discard" in args:
+        status = "discard"
+    else:
+        if best_rmse is None:
+            status = "baseline"
+        elif val_rmse < best_rmse:
+            status = "keep"
+        else:
+            status = "discard"
+
+    # Log
     commit = get_git_hash()
     log_result(commit, val_rmse, val_r2, status, description)
-
+    print(f"Best previous RMSE: {best_rmse}")
     print(f"Result logged to results.tsv (status={status})")
 
 
