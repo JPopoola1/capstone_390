@@ -15,3 +15,17 @@ commit	rmse	r2	status	description
 3e076ff	0.837233	0.116537	keep	rerun final ridge alpha 350
 120272b	0.837233	0.116537	baseline	dry run final ridge alpha 350
 120272b	0.837233	0.116537	keep	history-preserving dry run ridge alpha 350
+4307930	0.837233	0.116537	keep	dry run experiment set completion ridge alpha 350
+4307930	0.841665	0.107158	baseline	dry baseline hist gradient boosting restart
+4307930	0.837547	0.115873	discard	dry bayesian ridge learned shrinkage
+4307930	0.862785	0.061786	discard	dry huber robust regression
+4307930	0.855490	0.077585	discard	dry distance weighted knn 35
+4307930	0.836208	0.118698	keep	dry extra trees regularized
+4307930	0.857496	0.073254	discard	dry adaboost shallow trees
+4307930	0.845629	0.098728	discard	dry rbf kernel ridge
+4307930	0.837762	0.115419	discard	dry bagged ridge feature subsamples
+4307930	0.838050	0.114810	discard	dry tweedie log link xg
+4307930	0.831110	0.129411	keep	dry voting ridge extra trees
+4307930	0.830723	0.130221	keep	dry voting ridge extra trees even weights
+4307930	0.831067	0.129501	discard	dry voting ridge extra trees ridge heavy
+4307930	0.839036	0.112726	discard	dry stacked ridge extra trees passthrough
