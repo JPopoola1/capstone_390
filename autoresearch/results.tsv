@@ -1,0 +1,17 @@
+commit	rmse	r2	status	description
+73ce573	0.841665	0.107158	baseline	baseline
+73ce573	0.838728	0.113378	keep	ridge alpha 10
+73ce573	0.837978	0.114963	keep	ridge alpha 100
+73ce573	0.837258	0.116484	keep	ridge alpha 300
+73ce573	0.839931	0.110833	keep	ridge alpha 1000
+73ce573	0.842871	0.104596	keep	elasticnet alpha 0.01 l1 0.2
+73ce573	0.880862	0.022060	keep	ridge with pairwise interactions
+73ce573	0.859952	0.067938	keep	gradient boosting shallow trees
+73ce573	0.841139	0.108273	keep	random forest regularized
+73ce573	0.837431	0.116117	keep	ridge alpha 500
+73ce573	0.837479	0.116017	keep	ridge alpha 200
+73ce573	0.837233	0.116537	keep	ridge alpha 350
+73ce573	0.837239	0.116524	keep	ridge alpha 375
+3e076ff	0.837233	0.116537	keep	rerun final ridge alpha 350
+120272b	0.837233	0.116537	baseline	dry run final ridge alpha 350
+120272b	0.837233	0.116537	keep	history-preserving dry run ridge alpha 350
