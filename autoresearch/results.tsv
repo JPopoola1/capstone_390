@@ -29,3 +29,14 @@ commit	rmse	r2	status	description
 4307930	0.830723	0.130221	keep	dry voting ridge extra trees even weights
 4307930	0.831067	0.129501	discard	dry voting ridge extra trees ridge heavy
 4307930	0.839036	0.112726	discard	dry stacked ridge extra trees passthrough
+a459bea	0.830654	0.130365	keep	ridge alpha 325
+a459bea	0.830524	0.130638	keep	ridge alpha 275
+a459bea	0.830405	0.130888	keep	ridge alpha 225
+a459bea	0.830298	0.131111	keep	ridge alpha 175
+a459bea	0.830206	0.131304	keep	ridge alpha 125
+a459bea	0.830131	0.131460	keep	ridge alpha 75
+a459bea	0.830077	0.131573	keep	ridge alpha 25
+a459bea	0.830066	0.131597	keep	ridge alpha 10
+a459bea	0.830060	0.131609	keep	ridge alpha 1
+a459bea	0.830059	0.131610	keep	ridge alpha 0.1
+a459bea	0.830059	0.131610	discard	ridge alpha 0.01
