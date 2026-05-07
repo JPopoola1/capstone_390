@@ -24,7 +24,7 @@ def build_model():
         # Optional scaling (useful for linear models)
         ("scaler", StandardScaler()),
         ("model", VotingRegressor([
-            ("ridge", Ridge(alpha=350.0)),
+            ("ridge", Ridge(alpha=0.1)),
             ("extra_trees", ExtraTreesRegressor(
                 n_estimators=400,
                 max_depth=10,
