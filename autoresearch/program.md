@@ -27,12 +27,13 @@ Minimize **validation RMSE** on the `xg`.
 
 ## Ideas to explore
 
-- Different regressors: Ridge, Lasso, ElasticNet, SVR
+- Different regressors: Lasso, ElasticNet, SVR
 - Ensemble methods: RandomForest, GradientBoosting, HistGradientBoosting
 - Feature engineering: PolynomialFeatures, interaction terms
 - Preprocessing: RobustScaler, QuantileTransformer
 - Target transform: TransformedTargetRegressor with log
 - Hyperparameter tuning within the pipeline
+- Try a lot of different model types until one becomes apparent as the better one, then test more feature engineering with that model type.
 
 ## What NOT to do
 
