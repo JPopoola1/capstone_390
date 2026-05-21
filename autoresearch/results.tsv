@@ -45,3 +45,44 @@ a459bea	0.830059	0.131610	discard	ridge alpha 0.01
 9abdfad	0.859101	0.069783	discard	nonridge gradient boosting subsampled shallow
 9abdfad	0.840292	0.110069	discard	nonridge random forest regularized half features
 9abdfad	0.834509	0.122276	discard	nonridge voting trees hist gradient blend
+e4fdc25	0.830337	0.131030	discard	ridge-focused w_35
+e4fdc25	0.830095	0.131537	discard	ridge-focused w_40
+e4fdc25	0.830002	0.131730	keep	ridge-focused w_45
+e4fdc25	0.830059	0.131610	discard	ridge-focused w_50
+e4fdc25	0.830267	0.131176	discard	ridge-focused w_55
+e4fdc25	0.830624	0.130429	discard	ridge-focused w_60
+e4fdc25	0.831130	0.129368	discard	ridge-focused w_65
+e4fdc25	0.831786	0.127993	discard	ridge-focused w_70
+e4fdc25	0.832591	0.126305	discard	ridge-focused w_75
+e4fdc25	0.833544	0.124303	discard	ridge-focused w_80
+e4fdc25	17172171056781.832031	-371660752207029045894840320.000000	discard	ridge-focused alpha_0
+e4fdc25	0.830059	0.131610	discard	ridge-focused alpha_001
+e4fdc25	0.830059	0.131610	discard	ridge-focused alpha_01
+e4fdc25	0.830060	0.131609	discard	ridge-focused alpha_1
+e4fdc25	0.830062	0.131604	discard	ridge-focused alpha_5
+e4fdc25	0.830077	0.131573	discard	ridge-focused alpha_25
+e4fdc25	0.830072	0.131585	discard	ridge-focused tree_leaf_8
+e4fdc25	0.830187	0.131344	discard	ridge-focused tree_leaf_10
+e4fdc25	0.830261	0.131189	discard	ridge-focused tree_leaf_12
+e4fdc25	0.829748	0.132261	keep	ridge-focused tree_leaf_18
+e4fdc25	0.830584	0.130513	discard	ridge-focused tree_leaf_22
+e4fdc25	0.832287	0.126944	discard	ridge-focused tree_depth_8
+e4fdc25	0.831308	0.128995	discard	ridge-focused tree_depth_9
+e4fdc25	0.829051	0.133718	keep	ridge-focused tree_depth_11
+e4fdc25	0.828508	0.134853	keep	ridge-focused tree_depth_12
+e4fdc25	0.831620	0.128343	discard	ridge-focused tree_mf_50
+e4fdc25	0.831372	0.128861	discard	ridge-focused tree_mf_60
+e4fdc25	0.829948	0.131843	discard	ridge-focused tree_mf_80
+e4fdc25	0.829940	0.131860	discard	ridge-focused tree_mf_90
+e4fdc25	0.829718	0.132325	discard	ridge-focused tree_n_250
+e4fdc25	0.830219	0.131277	discard	ridge-focused tree_n_600
+e4fdc25	0.828571	0.134721	discard	ridge-focused robust_base
+e4fdc25	0.830229	0.131255	discard	ridge-focused w_45_leaf_12
+e4fdc25	0.829651	0.132465	discard	ridge-focused w_45_leaf_18
+e4fdc25	0.830444	0.130806	discard	ridge-focused w_55_leaf_12
+e4fdc25	0.829994	0.131747	discard	ridge-focused w_55_leaf_18
+e4fdc25	0.831739	0.128092	discard	ridge-focused w_60_mf_60
+e4fdc25	0.830480	0.130731	discard	ridge-focused w_60_mf_80
+e4fdc25	0.831571	0.128444	discard	ridge-focused w_40_mf_60
+e4fdc25	0.830044	0.131643	discard	ridge-focused w_40_mf_80
+e4fdc25	0.828508	0.134853	discard	final ridge extra trees depth 12
