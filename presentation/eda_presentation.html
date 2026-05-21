@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="eda_presentation_files/libs/clipboard/clipboard.min.js"></script>
+<script src="eda_presentation_files/libs/quarto-html/tabby.min.js"></script>
+<script src="eda_presentation_files/libs/quarto-html/popper.min.js"></script>
+<script src="eda_presentation_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="eda_presentation_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="eda_presentation_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="eda_presentation_files/libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.37">
+
+  <meta name="author" content="Jordan">
+  <meta name="dcterms.date" content="2026-05-21">
+  <title>Expected Goals, Travel, and Model Search</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="eda_presentation_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="eda_presentation_files/libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="eda_presentation_files/libs/revealjs/dist/theme/quarto-0427d8d92a431aa6a6430e53ec02a470.css">
+  <link href="eda_presentation_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="eda_presentation_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="eda_presentation_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="eda_presentation_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="eda_presentation_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="eda_presentation_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Expected Goals, Travel, and Model Search</h1>
+  <p class="subtitle">EDA and AutoResearch results for capstone_390</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Jordan 
+</div>
+</div>
+</div>
+
+  <p class="date">2026-05-21</p>
+</section>
+<section class="slide level2">
+
+<style>
+:root {
+  --r-main-font: "Aptos", "Segoe UI", Arial, sans-serif;
+  --r-heading-font: "Aptos Display", "Segoe UI", Arial, sans-serif;
+  --r-heading-letter-spacing: 0;
+  --r-heading-text-transform: none;
+  --r-background-color: #f7f8f5;
+  --r-main-color: #1f2933;
+  --r-heading-color: #143642;
+  --accent: #d04f2f;
+  --accent-2: #287271;
+  --muted: #65737e;
+}
+
+.reveal h1, .reveal h2 {
+  font-weight: 760;
+}
+
+.reveal h2 {
+  border-left: 0.35rem solid var(--accent);
+  padding-left: 0.7rem;
+}
+
+.reveal p, .reveal li {
+  line-height: 1.22;
+}
+
+.kicker {
+  color: var(--accent-2);
+  font-size: 0.78em;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.metric {
+  border-top: 3px solid var(--accent-2);
+  background: #ffffff;
+  padding: 0.8rem 0.9rem;
+  min-height: 5.1rem;
+}
+
+.metric strong {
+  display: block;
+  color: var(--accent);
+  font-size: 1.45em;
+  line-height: 1.05;
+}
+
+.metric span {
+  color: var(--muted);
+  font-size: 0.62em;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 1.2rem;
+  align-items: start;
+}
+
+.compact table {
+  font-size: 0.54em;
+}
+
+.compact th {
+  color: #143642;
+}
+
+.callout {
+  background: #fff;
+  border-left: 5px solid var(--accent);
+  padding: 0.8rem 1rem;
+  font-size: 0.78em;
+}
+
+.source-note {
+  color: var(--muted);
+  font-size: 0.48em;
+  margin-top: 0.4rem;
+}
+
+.fit-img img {
+  max-height: 520px;
+  object-fit: contain;
+}
+</style>
+</section>
+<section id="research-question" class="slide level2">
+<h2>Research Question</h2>
+<div class="kicker">
+Project frame
+</div>
+<p>How does travel distance affect a Premier League team’s attacking and defensive performance, measured with expected goals?</p>
+<div class="metric-grid">
+<div class="metric">
+<strong>xG</strong><span>Primary target: attacking expected goals</span>
+</div>
+<div class="metric">
+<strong>xGA</strong><span>Secondary target: expected goals allowed</span>
+</div>
+<div class="metric">
+<strong>RMSE</strong><span>Primary validation metric for model search</span>
+</div>
+<div class="metric">
+<strong>2025</strong><span>Locked final test season</span>
+</div>
+</div>
+<aside class="notes">
+<p>This presentation summarizes the repository’s EDA setup, the baseline travel-distance framing, and the AutoResearch model search. The core scientific question is not only whether home/away status matters, but whether away travel distance adds predictive information beyond team, opponent, and season structure.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="data-shape" class="slide level2">
+<h2>Data Shape</h2>
+<div class="kicker">
+Exploratory data summary
+</div>
+<div class="metric-grid">
+<div class="metric">
+<strong>3,800</strong><span>team-match rows in <code>autoresearch/data/processed.csv</code></span>
+</div>
+<div class="metric">
+<strong>27</strong><span>teams represented across 2021-2025 seasons</span>
+</div>
+<div class="metric">
+<strong>760</strong><span>rows per season, balanced by design</span>
+</div>
+<div class="metric">
+<strong>109.9</strong><span>mean away travel miles; max 293.1</span>
+</div>
+</div>
+<p><br></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Split</th>
+<th style="text-align: right;">Seasons</th>
+<th style="text-align: right;">Rows</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Train</td>
+<td style="text-align: right;">2021-2023</td>
+<td style="text-align: right;">2,280</td>
+<td>Fit candidate models</td>
+</tr>
+<tr class="even">
+<td>Validation</td>
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">760</td>
+<td>Select model and hyperparameters</td>
+</tr>
+<tr class="odd">
+<td>Locked test</td>
+<td style="text-align: right;">2025</td>
+<td style="text-align: right;">760</td>
+<td>Final evaluation only</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>The split follows the locked-test policy: no 2025 rows are used for fitting, feature engineering decisions, threshold selection, or hyperparameter tuning. This is important because soccer seasons are temporal. Random splitting would risk letting future team strength and season context leak backward into model selection.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="baseline-design" class="slide level2">
+<h2>Baseline Design</h2>
+<div class="two-col">
+<div>
+<div class="kicker">
+Feature construction
+</div>
+<p>The design matrix is intentionally interpretable:</p>
+<ul>
+<li><code>is_home</code></li>
+<li><code>travel_100_miles</code></li>
+<li>team fixed effects</li>
+<li>opponent fixed effects</li>
+<li>season fixed effects</li>
+<li>intercept</li>
+</ul>
+</div>
+<div>
+<div class="callout callout-none no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>The baseline question is whether travel distance improves predictive accuracy after accounting for home/away status and team/opponent identity.</p>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>Root README baseline:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Target</th>
+<th style="text-align: right;">Baseline RMSE</th>
+<th style="text-align: right;">Travel RMSE</th>
+<th>Direction</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>xg</code></td>
+<td style="text-align: right;">0.9645</td>
+<td style="text-align: right;">0.9696</td>
+<td>worsened</td>
+</tr>
+<tr class="even">
+<td><code>xga</code></td>
+<td style="text-align: right;">0.9958</td>
+<td style="text-align: right;">0.9880</td>
+<td>improved</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<aside class="notes">
+<p>The first baseline is not a black-box model. It asks a specific causal-adjacent prediction question: after controlling for team, opponent, season, and venue, does travel distance help? For xG, the first OLS baseline says no; travel worsened validation RMSE. For xGA, travel improved RMSE slightly, suggesting defensive effects may be more detectable than attacking effects in that baseline.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="autoresearch-protocol" class="slide level2">
+<h2>AutoResearch Protocol</h2>
+<div class="kicker">
+Experiment governance
+</div>
+<p>The AutoResearch agent was constrained to modify only <code>autoresearch/model.py</code>, return an sklearn-compatible estimator, run under 60 seconds on CPU, and optimize validation RMSE for <code>xg</code>.</p>
+<div class="two-col">
+<h3 id="frozen">Frozen</h3>
+<ul>
+<li><code>prepare.py</code></li>
+<li><code>run.py</code></li>
+<li>chronological split</li>
+<li>validation metric</li>
+<li>processed dataset</li>
+</ul>
+<h3 id="search-space-explored">Search space explored</h3>
+<ul>
+<li>Ridge regularization sweeps</li>
+<li>ElasticNet</li>
+<li>pairwise interactions</li>
+<li>random forests</li>
+<li>gradient boosting</li>
+<li>Extra Trees</li>
+<li>voting and stacked ensembles</li>
+</ul>
+</div>
+<aside class="notes">
+<p>This matters because the results are not arbitrary one-off runs. The agent followed a fixed evaluation harness: load the processed data, build the same travel-inclusive design matrix, fit on 2021-2023, evaluate on 2024, and log RMSE and R-squared. That makes the run history comparable.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="root-results-log" class="slide level2">
+<h2>Root Results Log</h2>
+<div class="kicker">
+<code>results.tsv</code> at repository root
+</div>
+<div class="compact">
+<table class="caption-top">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Run group</th>
+<th>Best row in group</th>
+<th style="text-align: right;">RMSE</th>
+<th style="text-align: right;">R2</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Baseline</td>
+<td>baseline</td>
+<td style="text-align: right;">0.841665</td>
+<td style="text-align: right;">0.107158</td>
+<td>reference for root result log</td>
+</tr>
+<tr class="even">
+<td>Ridge sweep</td>
+<td>ridge alpha 350</td>
+<td style="text-align: right;">0.837233</td>
+<td style="text-align: right;">0.116537</td>
+<td>best root-level run</td>
+</tr>
+<tr class="odd">
+<td>ElasticNet</td>
+<td>alpha 0.01, l1 0.2</td>
+<td style="text-align: right;">0.842871</td>
+<td style="text-align: right;">0.104596</td>
+<td>worse than baseline</td>
+</tr>
+<tr class="even">
+<td>Interactions</td>
+<td>ridge with pairwise interactions</td>
+<td style="text-align: right;">0.880862</td>
+<td style="text-align: right;">0.022060</td>
+<td>large degradation</td>
+</tr>
+<tr class="odd">
+<td>Tree models</td>
+<td>random forest regularized</td>
+<td style="text-align: right;">0.841139</td>
+<td style="text-align: right;">0.108273</td>
+<td>near baseline</td>
+</tr>
+<tr class="even">
+<td>Boosting</td>
+<td>gradient boosting shallow trees</td>
+<td style="text-align: right;">0.859952</td>
+<td style="text-align: right;">0.067938</td>
+<td>worse than baseline</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="callout callout-none no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Within the root-level result table, <code>ridge alpha 350</code> reduces validation RMSE by 0.004432, a 0.53% improvement over the logged baseline.</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>The root result log is a compact history with 14 rows. It supports a conservative conclusion: regularized linear modeling helped slightly, but more complex feature interactions and shallow tree/boosting approaches did not improve the controlled root-level result set.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="controlled-alpha-sweep" class="slide level2">
+<h2>Controlled Alpha Sweep</h2>
+<div class="kicker">
+<code>cleaned_results.tsv</code> and <code>alpha_performance.png</code>
+</div>
+<div class="fit-img">
+<p><img data-src="../alpha_performance.png"></p>
+</div>
+<aside class="notes">
+<p>This chart is the cleanest controlled experiment in the repo because the only axis intentionally varied is Ridge regularization strength. The best controlled Ridge result is alpha 350 with RMSE 0.837233 and R-squared 0.116537. Performance improves from low alpha values into the 300-350 range, then begins to worsen as shrinkage becomes too strong.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="cleaned-results-table" class="slide level2">
+<h2>Cleaned Results Table</h2>
+<div class="compact">
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 22%">
+<col style="width: 22%">
+<col style="width: 22%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Experiment</th>
+<th style="text-align: right;">Alpha</th>
+<th style="text-align: right;">RMSE</th>
+<th style="text-align: right;">R2</th>
+<th>Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Baseline linear regression</td>
+<td style="text-align: right;">N/A</td>
+<td style="text-align: right;">0.838832</td>
+<td style="text-align: right;">0.113158</td>
+<td>reference</td>
+</tr>
+<tr class="even">
+<td>Ridge alpha 10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0.838728</td>
+<td style="text-align: right;">0.113378</td>
+<td>improved</td>
+</tr>
+<tr class="odd">
+<td>Ridge alpha 100</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">0.837978</td>
+<td style="text-align: right;">0.114963</td>
+<td>improved</td>
+</tr>
+<tr class="even">
+<td>Ridge alpha 200</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: right;">0.837479</td>
+<td style="text-align: right;">0.116017</td>
+<td>improved</td>
+</tr>
+<tr class="odd">
+<td>Ridge alpha 300</td>
+<td style="text-align: right;">300</td>
+<td style="text-align: right;">0.837258</td>
+<td style="text-align: right;">0.116484</td>
+<td>improved</td>
+</tr>
+<tr class="even">
+<td>Ridge alpha 350</td>
+<td style="text-align: right;">350</td>
+<td style="text-align: right;">0.837233</td>
+<td style="text-align: right;">0.116537</td>
+<td>best controlled ridge result</td>
+</tr>
+<tr class="odd">
+<td>Ridge alpha 375</td>
+<td style="text-align: right;">375</td>
+<td style="text-align: right;">0.837239</td>
+<td style="text-align: right;">0.116524</td>
+<td>slight regression</td>
+</tr>
+<tr class="even">
+<td>Ridge alpha 500</td>
+<td style="text-align: right;">500</td>
+<td style="text-align: right;">0.837431</td>
+<td style="text-align: right;">0.116117</td>
+<td>regression</td>
+</tr>
+<tr class="odd">
+<td>Ridge alpha 1000</td>
+<td style="text-align: right;">1000</td>
+<td style="text-align: right;">0.839931</td>
+<td style="text-align: right;">0.110833</td>
+<td>worse than baseline</td>
+</tr>
+</tbody>
+</table>
+</div>
+<aside class="notes">
+<p>The cleaned table is useful because it strips out the noisier broader search and documents fixed conditions: same dataset, same train-validation split, same target, same metric, same travel-inclusive feature setup. The signal is small but consistent: moderate Ridge regularization improves validation fit, while excessive regularization degrades it.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="full-autoresearch-history" class="slide level2">
+<h2>Full AutoResearch History</h2>
+<div class="kicker">
+<code>autoresearch/results.tsv</code>
+</div>
+<div class="metric-grid">
+<div class="metric">
+<strong>46</strong><span>logged runs in full AutoResearch history</span>
+</div>
+<div class="metric">
+<strong>0.830059</strong><span>best validation RMSE</span>
+</div>
+<div class="metric">
+<strong>0.131610</strong><span>best validation R2</span>
+</div>
+<div class="metric">
+<strong>1.38%</strong><span>RMSE reduction versus logged baseline</span>
+</div>
+</div>
+<p><br></p>
+<div class="compact">
+<table class="caption-top">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Best full-history run</th>
+<th>Commit</th>
+<th style="text-align: right;">RMSE</th>
+<th style="text-align: right;">R2</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ridge alpha 0.1</td>
+<td><code>a459bea</code></td>
+<td style="text-align: right;">0.830059</td>
+<td style="text-align: right;">0.131610</td>
+<td>keep</td>
+</tr>
+<tr class="even">
+<td>ridge alpha 0.01</td>
+<td><code>a459bea</code></td>
+<td style="text-align: right;">0.830059</td>
+<td style="text-align: right;">0.131610</td>
+<td>discard</td>
+</tr>
+<tr class="odd">
+<td>dry voting ridge extra trees even weights</td>
+<td><code>4307930</code></td>
+<td style="text-align: right;">0.830723</td>
+<td style="text-align: right;">0.130221</td>
+<td>keep</td>
+</tr>
+<tr class="even">
+<td>nonridge voting trees hist gradient blend</td>
+<td><code>9abdfad</code></td>
+<td style="text-align: right;">0.834509</td>
+<td style="text-align: right;">0.122276</td>
+<td>discard</td>
+</tr>
+</tbody>
+</table>
+</div>
+<aside class="notes">
+<p>The full history extends beyond the root-level summary. It includes dry runs, tree ensembles, blended models, and a second Ridge sweep that moved toward much smaller alpha values. The best full-history row is Ridge alpha 0.1, with RMSE 0.830059. This is stronger than the controlled root-level best, but it belongs to the broader AutoResearch log rather than the cleaned alpha sweep.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="performance-overview" class="slide level2">
+<h2>Performance Overview</h2>
+<div class="kicker">
+<code>performance.png</code>
+</div>
+<div class="fit-img">
+<p><img data-src="../performance.png"></p>
+</div>
+<aside class="notes">
+<p>The performance figure summarizes validation RMSE across the recorded model attempts. The main pattern is that complexity alone did not guarantee improvement. Some tree-based and interaction-heavy candidates were substantially worse. The strongest results came from models that preserved the stable linear signal while tuning regularization or blending carefully.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="what-the-results-say" class="slide level2">
+<h2>What The Results Say</h2>
+<div class="two-col">
+<h3 id="strongest-evidence">Strongest evidence</h3>
+<ul>
+<li>Moderate Ridge regularization improved the controlled root sweep.</li>
+<li>The broader AutoResearch history found an even lower-RMSE Ridge setting.</li>
+<li>High-complexity models often underperformed on 2024 validation.</li>
+</ul>
+<h3 id="scientific-interpretation">Scientific interpretation</h3>
+<ul>
+<li>Home/team/opponent structure carries most of the predictive signal.</li>
+<li>Travel distance is included, but its attacking xG contribution is modest.</li>
+<li>The validation gains are real but small, so final-test discipline matters.</li>
+</ul>
+</div>
+<div class="callout callout-none no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>The safest model-selection statement is: Ridge-style regularization is the most reliable direction found; alpha choice depends on whether the controlled root sweep or the full AutoResearch log is treated as authoritative.</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>This slide separates model performance from substantive soccer interpretation. The model can improve xG prediction while travel distance remains a small component of the predictive structure. The first OLS baseline even showed travel worsening xG validation RMSE. So the data supports a careful story, not a claim that travel strongly drives attacking performance.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="reconciliation-two-winners" class="slide level2">
+<h2>Reconciliation: Two Winners</h2>
+<div class="kicker">
+Why the files disagree
+</div>
+<table class="caption-top">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 25%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Source</th>
+<th>Scope</th>
+<th>Best row</th>
+<th style="text-align: right;">RMSE</th>
+<th>Use it for</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>cleaned_results.tsv</code></td>
+<td>controlled Ridge alpha sweep</td>
+<td>ridge alpha 350</td>
+<td style="text-align: right;">0.837233</td>
+<td>clean experimental explanation</td>
+</tr>
+<tr class="even">
+<td>root <code>results.tsv</code></td>
+<td>compact mixed log</td>
+<td>ridge alpha 350</td>
+<td style="text-align: right;">0.837233</td>
+<td>root-level result summary</td>
+</tr>
+<tr class="odd">
+<td><code>autoresearch/results.tsv</code></td>
+<td>full iterative AutoResearch log</td>
+<td>ridge alpha 0.1</td>
+<td style="text-align: right;">0.830059</td>
+<td>best observed validation score</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-none no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Before touching the locked 2025 test set, choose one selection policy and align <code>model.py</code> to that selected row.</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>This is the most important governance point in the presentation. The files are not wrong; they answer slightly different questions. The cleaned results are better for controlled explanation. The full AutoResearch history is better for identifying the best observed validation score. A final report should state which criterion is used before evaluating 2025.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="current-model-file-check" class="slide level2">
+<h2>Current Model File Check</h2>
+<div class="kicker">
+<code>autoresearch/model.py</code>
+</div>
+<p>The current editable model file contains a <code>VotingRegressor</code> with:</p>
+<ul>
+<li><code>ExtraTreesRegressor</code></li>
+<li><code>HistGradientBoostingRegressor</code></li>
+<li><code>RandomForestRegressor</code></li>
+<li>weights: 0.55 / 0.30 / 0.15</li>
+</ul>
+<div class="callout callout-none no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>This current code does not match the best full-history logged row, <code>ridge alpha 0.1</code>. Treat this as a reproducibility checkpoint before final evaluation.</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>The repo’s current model.py is tree-ensemble based, while the best full log entry is Ridge alpha 0.1. That mismatch should be resolved before the locked 2025 test is used. The clean action is to decide whether the final model should be the best logged Ridge model or the current ensemble, rerun validation under the frozen harness, and only then evaluate 2025.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="recommended-final-evaluation-path" class="slide level2">
+<h2>Recommended Final Evaluation Path</h2>
+<div class="kicker">
+Next scientific step
+</div>
+<ol type="1">
+<li>Freeze the model-selection policy.</li>
+<li>Reproduce the selected validation result in <code>autoresearch/run.py</code>.</li>
+<li>Confirm no 2025 rows influenced feature or hyperparameter decisions.</li>
+<li>Evaluate once on the locked 2025 season.</li>
+<li>Report xG and xGA separately, because travel may affect attack and defense differently.</li>
+</ol>
+<div class="callout callout-none no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Main takeaway: regularized linear structure was more trustworthy than added complexity for validation xG, and the locked test set should be used only after resolving the selected-model mismatch.</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>This gives the audience a concrete close. The project already has the right scientific safeguards: a chronological split, a locked test policy, and a logged model-search history. The remaining work is not another broad search; it is selecting the final model cleanly and preserving the integrity of the 2025 test.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="source-inventory" class="slide level2">
+<h2>Source Inventory</h2>
+<div class="compact">
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Used for</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>README.md</code></td>
+<td>research question, baseline travel framing, initial xG/xGA results</td>
+</tr>
+<tr class="even">
+<td><code>LOCKED_TEST_PLAN.md</code></td>
+<td>train/validation/test policy</td>
+</tr>
+<tr class="odd">
+<td><code>autoresearch/program.md</code></td>
+<td>AutoResearch objective and constraints</td>
+</tr>
+<tr class="even">
+<td><code>autoresearch/prepare.py</code></td>
+<td>feature engineering and split logic</td>
+</tr>
+<tr class="odd">
+<td><code>autoresearch/run.py</code></td>
+<td>validation metric and logging workflow</td>
+</tr>
+<tr class="even">
+<td><code>autoresearch/model.py</code></td>
+<td>current estimator checkpoint</td>
+</tr>
+<tr class="odd">
+<td><code>results.tsv</code></td>
+<td>root-level compact result log</td>
+</tr>
+<tr class="even">
+<td><code>cleaned_results.tsv</code></td>
+<td>controlled Ridge alpha sweep</td>
+</tr>
+<tr class="odd">
+<td><code>autoresearch/results.tsv</code></td>
+<td>full iterative experiment history</td>
+</tr>
+<tr class="even">
+<td><code>alpha_performance.png</code></td>
+<td>controlled alpha sweep visual</td>
+</tr>
+<tr class="odd">
+<td><code>performance.png</code></td>
+<td>performance comparison visual</td>
+</tr>
+</tbody>
+</table>
+</div>
+<aside class="notes">
+<p>All source claims in the deck are drawn from files already present in the repo. The presentation references the existing PNG figures in place and does not create additional result artifacts.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="eda_presentation_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="eda_presentation_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="eda_presentation_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="eda_presentation_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="eda_presentation_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="eda_presentation_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="eda_presentation_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="eda_presentation_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="eda_presentation_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="eda_presentation_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="eda_presentation_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': true,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
