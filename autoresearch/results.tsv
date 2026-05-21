@@ -40,3 +40,8 @@ a459bea	0.830066	0.131597	keep	ridge alpha 10
 a459bea	0.830060	0.131609	keep	ridge alpha 1
 a459bea	0.830059	0.131610	keep	ridge alpha 0.1
 a459bea	0.830059	0.131610	discard	ridge alpha 0.01
+9abdfad	0.843050	0.104218	discard	nonridge extra trees bootstrap shallow
+9abdfad	0.838390	0.114092	discard	nonridge hist gradient boosting l2 shallow
+9abdfad	0.859101	0.069783	discard	nonridge gradient boosting subsampled shallow
+9abdfad	0.840292	0.110069	discard	nonridge random forest regularized half features
+9abdfad	0.834509	0.122276	discard	nonridge voting trees hist gradient blend
