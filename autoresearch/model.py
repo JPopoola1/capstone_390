@@ -104,10 +104,10 @@ def build_model():
 
     config = _read_experiment_config({
         "ridge_alpha": 0.1,
-        "tree_weight": 0.70,
+        "tree_weight": 0.78,
         "n_estimators": 400,
         "max_depth": 15,
-        "min_samples_leaf": 18,
+        "min_samples_leaf": 17,
         "max_features": 0.75,
         "random_state": 42,
         "interactions": "none",
