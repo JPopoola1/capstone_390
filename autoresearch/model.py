@@ -26,7 +26,7 @@ def build_model():
     n_estimators = 400
     max_depth = 12
     min_samples_leaf = 18
-    max_features = 0.7
+    max_features = 0.75
     random_state = 42
 
     return Pipeline([
