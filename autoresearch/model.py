@@ -25,7 +25,7 @@ def build_model():
     ridge_weight = 1.0 - tree_weight
     n_estimators = 400
     max_depth = 12
-    min_samples_leaf = 15
+    min_samples_leaf = 14
     max_features = 0.7
     random_state = 42
 
