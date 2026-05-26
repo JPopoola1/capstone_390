@@ -21,7 +21,7 @@ def build_model():
     """
 
     ridge_alpha = 0.1
-    tree_weight = 0.52
+    tree_weight = 0.54
     ridge_weight = 1.0 - tree_weight
     n_estimators = 400
     max_depth = 12
