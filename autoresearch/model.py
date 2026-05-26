@@ -20,17 +20,26 @@ def build_model():
     - preprocessing steps
     """
 
+    ridge_alpha = 0.1
+    tree_weight = 0.52
+    ridge_weight = 1.0 - tree_weight
+    n_estimators = 400
+    max_depth = 12
+    min_samples_leaf = 15
+    max_features = 0.7
+    random_state = 42
+
     return Pipeline([
         ("scaler", StandardScaler()),
         ("model", VotingRegressor([
-            ("ridge", Ridge(alpha=0.1)),
+            ("ridge", Ridge(alpha=ridge_alpha)),
             ("extra_trees", ExtraTreesRegressor(
-                n_estimators=400,
-                max_depth=12,
-                min_samples_leaf=15,
-                max_features=0.7,
-                random_state=42,
+                n_estimators=n_estimators,
+                max_depth=max_depth,
+                min_samples_leaf=min_samples_leaf,
+                max_features=max_features,
+                random_state=random_state,
                 n_jobs=1,
             )),
-        ], weights=[0.5, 0.5])),
+        ], weights=[ridge_weight, tree_weight])),
     ])
