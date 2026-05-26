@@ -27,7 +27,7 @@ Minimize **validation RMSE** on the `xg`.
 
 ## Ideas to focus on
 
-Ridge model regression. Other model types do not seem to really lower the RMSE as much as the ridge model, so try to perfect the ridge model for this prgoram.
+Ridge model regression. Other model types do not seem to really lower the RMSE as much as the ridge model, so try to perfect the ridge model for this program. Try to create interaction terms as well. For example, A team with a high number of “goals for” would most likely win, so make that a factor as well. Also weigh the number of shots on target heavily, as that does highly influence the xG.
 
 ## What NOT to do
 

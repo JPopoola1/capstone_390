@@ -86,3 +86,23 @@ e4fdc25	0.830480	0.130731	discard	ridge-focused w_60_mf_80
 e4fdc25	0.831571	0.128444	discard	ridge-focused w_40_mf_60
 e4fdc25	0.830044	0.131643	discard	ridge-focused w_40_mf_80
 e4fdc25	0.828508	0.134853	discard	final ridge extra trees depth 12
+5004d0a	0.828508	0.134853	discard	batch2 constants baseline ridge extra trees
+5004d0a	0.828667	0.134522	discard	batch2 tree weight 048
+5004d0a	0.828371	0.135140	keep	batch2 tree weight 052
+6311498	0.828255	0.135382	keep	batch2 tree weight 054
+f767a77	0.828160	0.135579	keep	batch2 tree weight 056
+1cc6f42	0.828087	0.135732	keep	batch2 tree weight 058
+5506b0a	0.828036	0.135840	keep	batch2 tree weight 060
+4db40c3	0.828005	0.135903	keep	batch2 tree weight 062
+c343ca0	0.827996	0.135921	keep	batch2 tree weight 064
+c02c4da	0.828009	0.135895	discard	batch2 tree weight 066
+c02c4da	0.827533	0.136889	keep	batch2 tree weight 064 leaf 14
+c73b49e	0.827533	0.136888	discard	batch2 tree weight 064 leaf 13
+c73b49e	0.827541	0.136872	discard	batch2 tree weight 064 leaf 12
+c73b49e	0.827345	0.137282	keep	batch2 tree weight 064 leaf 16
+d2ffeae	0.825859	0.140377	keep	batch2 tree weight 064 leaf 18
+1f38135	0.826835	0.138345	discard	batch2 tree weight 064 leaf 20
+1f38135	0.825927	0.140235	discard	batch2 tree weight 062 leaf 18
+1f38135	0.825813	0.140473	keep	batch2 tree weight 066 leaf 18
+2e95110	0.825252	0.141639	keep	batch2 tree weight 066 leaf 18 mf 075
+7523859	0.826001	0.140081	discard	batch2 tree weight 066 leaf 18 mf 080
