@@ -12,7 +12,7 @@ from sklearn.ensemble import ExtraTreesRegressor, VotingRegressor
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.linear_model import Ridge
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import MaxAbsScaler
+from sklearn.preprocessing import StandardScaler
 
 
 class InteractionFeatures(BaseEstimator, TransformerMixin):
@@ -125,7 +125,7 @@ def build_model():
 
     return Pipeline([
         ("interactions", InteractionFeatures(mode=interactions)),
-        ("scaler", MaxAbsScaler()),
+        ("scaler", StandardScaler()),
         ("model", VotingRegressor([
             ("ridge", Ridge(alpha=ridge_alpha)),
             ("extra_trees", ExtraTreesRegressor(
