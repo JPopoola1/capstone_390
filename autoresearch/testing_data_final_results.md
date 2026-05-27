@@ -1,0 +1,13 @@
+# Testing Data Final Results
+
+Locked model: `batch5 tw 78 leaf 17 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none`
+
+Testing set: 760 rows, season 2025, dated 2024-08-16 through 2025-05-25.
+
+| run | model_description | train_rows | test_rows | test_start_date | test_end_date | rmse | r2 | train_time_seconds |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | batch5 tw 78 leaf 17 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none | 2280 | 760 | 2024-08-16 | 2025-05-25 | 0.792404 | 0.064477 | 0.970434 |
+| 2 | batch5 tw 78 leaf 17 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none | 2280 | 760 | 2024-08-16 | 2025-05-25 | 0.792404 | 0.064477 | 0.950336 |
+| 3 | batch5 tw 78 leaf 17 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none | 2280 | 760 | 2024-08-16 | 2025-05-25 | 0.792404 | 0.064477 | 0.948985 |
+| 4 | batch5 tw 78 leaf 17 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none | 2280 | 760 | 2024-08-16 | 2025-05-25 | 0.792404 | 0.064477 | 0.951640 |
+| 5 | batch5 tw 78 leaf 17 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none | 2280 | 760 | 2024-08-16 | 2025-05-25 | 0.792404 | 0.064477 | 0.970791 |
