@@ -461,3 +461,6 @@ ce4f0f8	0.826835	0.138343	discard	batch4 tw 68 leaf 16 mf 075 depth 20 n 400 alp
 9c1d4f3	0.822305	0.147760	discard	batch5 tw 72 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 19 inter none
 9c1d4f3	0.823149	0.146009	discard	batch5 tw 68 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 21 inter none
 9c1d4f3	0.823063	0.146187	discard	batch5 tw 70 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 21 inter none
+01dfedb	0.828077	0.135753	discard	extra trees poisson criterion
+01dfedb	0.860649	0.066427	discard	log1p target transform
+01dfedb	0.820630	0.151229	keep	maxabs scaler for one hot design

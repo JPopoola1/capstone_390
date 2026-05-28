@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AutoResearch Model Performance Report</title>
+  <style>
+    :root {
+      --ink: #1f2933;
+      --muted: #52606d;
+      --line: #d9e2ec;
+      --panel: #f8fafc;
+      --blue: #0072b2;
+      --orange: #e69f00;
+      --green: #009e73;
+      --red: #d55e00;
+    }
+    body {
+      color: var(--ink);
+      font: 15px/1.5 Arial, Helvetica, sans-serif;
+      margin: 0;
+      background: white;
+    }
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 28px 48px;
+    }
+    h1, h2, h3 {
+      line-height: 1.2;
+      margin: 0 0 12px;
+    }
+    h1 {
+      font-size: 30px;
+    }
+    h2 {
+      border-top: 1px solid var(--line);
+      font-size: 21px;
+      margin-top: 30px;
+      padding-top: 22px;
+    }
+    h3 {
+      font-size: 16px;
+      margin-top: 20px;
+    }
+    p {
+      margin: 0 0 12px;
+    }
+    .subtitle {
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+    .grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin: 20px 0;
+    }
+    .metric {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 14px;
+    }
+    .metric span {
+      color: var(--muted);
+      display: block;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+    .metric strong {
+      display: block;
+      font-size: 24px;
+      margin-top: 4px;
+    }
+    table {
+      border-collapse: collapse;
+      margin: 12px 0 18px;
+      width: 100%;
+    }
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: var(--panel);
+      font-weight: 700;
+    }
+    td.num, th.num {
+      text-align: right;
+    }
+    code {
+      background: #edf2f7;
+      border-radius: 4px;
+      padding: 2px 4px;
+    }
+    .figure {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      margin: 16px 0 22px;
+      padding: 14px;
+    }
+    .caption {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 8px;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    .note {
+      background: #fff8e6;
+      border-left: 4px solid var(--orange);
+      padding: 12px 14px;
+    }
+    @media (max-width: 800px) {
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <h1>AutoResearch Model Performance Report</h1>
+  <p class="subtitle">Exploratory data summary, sklearn model-selection notes, and validation/test visuals for the xG regression workflow.</p>
+
+  <div class="note">
+    <strong>Model-file status:</strong> <code>autoresearch/model.py</code> has been restored to the pre-change version that uses <code>StandardScaler</code>. This report is descriptive only.
+  </div>
+
+  <section>
+    <h2>Executive Summary</h2>
+    <div class="grid">
+      <div class="metric"><span>Rows</span><strong>3,800</strong></div>
+      <div class="metric"><span>Target mean xG</span><strong>1.404</strong></div>
+      <div class="metric"><span>Best validation RMSE logged</span><strong>0.820630</strong></div>
+      <div class="metric"><span>Locked test RMSE</span><strong>0.792404</strong></div>
+    </div>
+    <p>The dataset contains one team-match row per observation across seasons 2021 through 2025. The held-out testing split is the 2025 season, dated 2024-08-16 through 2025-05-25. The locked final test evaluation was consistent across five runs: RMSE 0.792404 and R2 0.064477 each time.</p>
+    <p>The current modeling surface exposed to <code>model.py</code> is limited to home/away status, travel distance, team, opponent, and season indicators. Shot-level features such as shots and shots on target are present in the processed CSV, but they are not passed into the design matrix by the frozen preparation code.</p>
+  </section>
+
+  <section>
+    <h2>Data Profile</h2>
+    <table>
+      <thead>
+        <tr><th>Field</th><th class="num">Mean</th><th class="num">Std</th><th class="num">Min</th><th class="num">Median</th><th class="num">Max</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>xG</td><td class="num">1.404</td><td class="num">0.828</td><td class="num">0.000</td><td class="num">1.300</td><td class="num">7.000</td></tr>
+        <tr><td>xGA</td><td class="num">1.404</td><td class="num">0.828</td><td class="num">0.000</td><td class="num">1.300</td><td class="num">7.000</td></tr>
+        <tr><td>Goals for</td><td class="num">1.458</td><td class="num">1.298</td><td class="num">0.000</td><td class="num">1.000</td><td class="num">9.000</td></tr>
+        <tr><td>Shots</td><td class="num">12.729</td><td class="num">5.594</td><td class="num">0.000</td><td class="num">12.000</td><td class="num">37.000</td></tr>
+        <tr><td>Shots on target</td><td class="num">4.277</td><td class="num">2.449</td><td class="num">0.000</td><td class="num">4.000</td><td class="num">16.000</td></tr>
+        <tr><td>Away travel miles</td><td class="num">109.880</td><td class="num">68.527</td><td class="num">0.600</td><td class="num">103.900</td><td class="num">293.100</td></tr>
+      </tbody>
+    </table>
+
+    <div class="figure">
+      <svg viewBox="0 0 760 330" role="img" aria-label="Mean xG by season bar chart">
+        <line x1="70" y1="260" x2="720" y2="260" stroke="#52606d"/>
+        <line x1="70" y1="40" x2="70" y2="260" stroke="#52606d"/>
+        <text x="24" y="54" font-size="12" fill="#52606d">1.6</text>
+        <text x="24" y="123" font-size="12" fill="#52606d">1.4</text>
+        <text x="24" y="191" font-size="12" fill="#52606d">1.2</text>
+        <text x="20" y="263" font-size="12" fill="#52606d">1.0</text>
+        <line x1="70" y1="55" x2="720" y2="55" stroke="#d9e2ec"/>
+        <line x1="70" y1="123" x2="720" y2="123" stroke="#d9e2ec"/>
+        <line x1="70" y1="191" x2="720" y2="191" stroke="#d9e2ec"/>
+        <rect x="105" y="160" width="80" height="100" fill="#0072b2"/>
+        <rect x="230" y="145" width="80" height="115" fill="#56b4e9"/>
+        <rect x="355" y="118" width="80" height="142" fill="#009e73"/>
+        <rect x="480" y="73" width="80" height="187" fill="#e69f00"/>
+        <rect x="605" y="118" width="80" height="142" fill="#d55e00"/>
+        <text x="145" y="286" text-anchor="middle" font-size="13">2021</text>
+        <text x="270" y="286" text-anchor="middle" font-size="13">2022</text>
+        <text x="395" y="286" text-anchor="middle" font-size="13">2023</text>
+        <text x="520" y="286" text-anchor="middle" font-size="13">2024</text>
+        <text x="645" y="286" text-anchor="middle" font-size="13">2025</text>
+        <text x="145" y="151" text-anchor="middle" font-size="12">1.295</text>
+        <text x="270" y="136" text-anchor="middle" font-size="12">1.339</text>
+        <text x="395" y="109" text-anchor="middle" font-size="12">1.419</text>
+        <text x="520" y="64" text-anchor="middle" font-size="12">1.550</text>
+        <text x="645" y="109" text-anchor="middle" font-size="12">1.418</text>
+        <text x="390" y="316" text-anchor="middle" font-size="13" fill="#52606d">Season</text>
+        <text x="18" y="150" transform="rotate(-90 18 150)" text-anchor="middle" font-size="13" fill="#52606d">Mean xG</text>
+      </svg>
+      <p class="caption">Figure 1. Season-level mean xG. The validation season, 2024, has the highest mean target value, which makes validation performance slightly harsher than the final 2025 test season.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Model Selection Notes</h2>
+    <p>The sklearn workflow uses a pipeline-compatible estimator and evaluates RMSE on the validation split. The strongest family in the log is a ridge and ExtraTrees voting regressor, with controlled tree depth, leaf size, feature sampling, and fixed random state for reproducibility.</p>
+    <table>
+      <thead>
+        <tr><th>Experiment</th><th class="num">Validation RMSE</th><th class="num">Validation R2</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Previous best kept model: batch5 tw 78 leaf 17 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none</td><td class="num">0.821198</td><td class="num">0.150054</td><td>keep</td></tr>
+        <tr><td>ExtraTrees Poisson criterion</td><td class="num">0.828077</td><td class="num">0.135753</td><td>discard</td></tr>
+        <tr><td>Log1p target transform</td><td class="num">0.860649</td><td class="num">0.066427</td><td>discard</td></tr>
+        <tr><td>MaxAbsScaler for one-hot design</td><td class="num">0.820630</td><td class="num">0.151229</td><td>keep in log, reverted in model.py per instruction</td></tr>
+      </tbody>
+    </table>
+
+    <div class="figure">
+      <svg viewBox="0 0 760 330" role="img" aria-label="Validation RMSE comparison bar chart">
+        <line x1="85" y1="260" x2="720" y2="260" stroke="#52606d"/>
+        <line x1="85" y1="45" x2="85" y2="260" stroke="#52606d"/>
+        <text x="32" y="56" font-size="12" fill="#52606d">0.86</text>
+        <text x="32" y="126" font-size="12" fill="#52606d">0.84</text>
+        <text x="32" y="196" font-size="12" fill="#52606d">0.82</text>
+        <line x1="85" y1="55" x2="720" y2="55" stroke="#d9e2ec"/>
+        <line x1="85" y1="125" x2="720" y2="125" stroke="#d9e2ec"/>
+        <line x1="85" y1="195" x2="720" y2="195" stroke="#d9e2ec"/>
+        <rect x="125" y="191" width="90" height="69" fill="#0072b2"/>
+        <rect x="275" y="167" width="90" height="93" fill="#d55e00"/>
+        <rect x="425" y="53" width="90" height="207" fill="#d55e00"/>
+        <rect x="575" y="193" width="90" height="67" fill="#009e73"/>
+        <text x="170" y="183" text-anchor="middle" font-size="12">0.821198</text>
+        <text x="320" y="159" text-anchor="middle" font-size="12">0.828077</text>
+        <text x="470" y="45" text-anchor="middle" font-size="12">0.860649</text>
+        <text x="620" y="185" text-anchor="middle" font-size="12">0.820630</text>
+        <text x="170" y="286" text-anchor="middle" font-size="12">Prev best</text>
+        <text x="320" y="286" text-anchor="middle" font-size="12">Poisson</text>
+        <text x="470" y="286" text-anchor="middle" font-size="12">Log target</text>
+        <text x="620" y="286" text-anchor="middle" font-size="12">MaxAbs</text>
+        <text x="402" y="316" text-anchor="middle" font-size="13" fill="#52606d">Experiment</text>
+        <text x="18" y="150" transform="rotate(-90 18 150)" text-anchor="middle" font-size="13" fill="#52606d">Validation RMSE</text>
+      </svg>
+      <p class="caption">Figure 2. Validation RMSE for recent sklearn trials. Lower is better. The MaxAbsScaler trial had the best validation score but has been reverted from <code>model.py</code> per instruction.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Held-Out Test Result</h2>
+    <p>The final testing evaluation used only the 2025 testing split. Five repeated runs returned the same RMSE and R2, showing deterministic behavior for the locked random state and pipeline.</p>
+    <table>
+      <thead>
+        <tr><th>Run</th><th class="num">Test RMSE</th><th class="num">Test R2</th><th class="num">Rows</th><th>Date range</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td class="num">0.792404</td><td class="num">0.064477</td><td class="num">760</td><td>2024-08-16 to 2025-05-25</td></tr>
+        <tr><td>2</td><td class="num">0.792404</td><td class="num">0.064477</td><td class="num">760</td><td>2024-08-16 to 2025-05-25</td></tr>
+        <tr><td>3</td><td class="num">0.792404</td><td class="num">0.064477</td><td class="num">760</td><td>2024-08-16 to 2025-05-25</td></tr>
+        <tr><td>4</td><td class="num">0.792404</td><td class="num">0.064477</td><td class="num">760</td><td>2024-08-16 to 2025-05-25</td></tr>
+        <tr><td>5</td><td class="num">0.792404</td><td class="num">0.064477</td><td class="num">760</td><td>2024-08-16 to 2025-05-25</td></tr>
+      </tbody>
+    </table>
+
+    <div class="figure">
+      <svg viewBox="0 0 760 260" role="img" aria-label="Five identical test RMSE runs line chart">
+        <line x1="75" y1="190" x2="720" y2="190" stroke="#52606d"/>
+        <line x1="75" y1="50" x2="75" y2="190" stroke="#52606d"/>
+        <line x1="75" y1="110" x2="720" y2="110" stroke="#d9e2ec"/>
+        <polyline points="135,110 260,110 385,110 510,110 635,110" fill="none" stroke="#0072b2" stroke-width="3"/>
+        <circle cx="135" cy="110" r="6" fill="#0072b2"/>
+        <circle cx="260" cy="110" r="6" fill="#0072b2"/>
+        <circle cx="385" cy="110" r="6" fill="#0072b2"/>
+        <circle cx="510" cy="110" r="6" fill="#0072b2"/>
+        <circle cx="635" cy="110" r="6" fill="#0072b2"/>
+        <text x="45" y="114" font-size="12" fill="#52606d">0.792</text>
+        <text x="135" y="216" text-anchor="middle" font-size="13">1</text>
+        <text x="260" y="216" text-anchor="middle" font-size="13">2</text>
+        <text x="385" y="216" text-anchor="middle" font-size="13">3</text>
+        <text x="510" y="216" text-anchor="middle" font-size="13">4</text>
+        <text x="635" y="216" text-anchor="middle" font-size="13">5</text>
+        <text x="385" y="246" text-anchor="middle" font-size="13" fill="#52606d">Run</text>
+        <text x="18" y="125" transform="rotate(-90 18 125)" text-anchor="middle" font-size="13" fill="#52606d">Test RMSE</text>
+        <text x="385" y="36" text-anchor="middle" font-size="13">All five runs: RMSE 0.792404</text>
+      </svg>
+      <p class="caption">Figure 3. Repeated held-out test evaluation. Identical values indicate stable evaluation rather than run-to-run variance.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Interpretation</h2>
+    <p>An RMSE near 0.79 means predictions are typically off by about 0.79 expected goals per team-match on brand-new 2025 data. Since the target standard deviation is about 0.82, the model is learning some repeatable structure but still leaves most match-level xG variation unexplained.</p>
+    <p>The model family is reasonable for the available design matrix: ridge handles the sparse indicator structure, while ExtraTrees can capture nonlinear team/opponent/travel effects. The main ceiling appears to come from feature availability. The strongest soccer signal features in the raw table, especially shots and shots on target, are not part of the frozen design matrix used by <code>run.py</code>.</p>
+  </section>
+</main>
+</body>
+</html>
