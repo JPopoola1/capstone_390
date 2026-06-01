@@ -1,0 +1,31 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{neurips_2024}[2024/01/01 Minimal NeurIPS-compatible local style]
+\DeclareOption*{}
+\ProcessOptions\relax
+
+\RequirePackage[margin=1in]{geometry}
+\RequirePackage{times}
+\RequirePackage{url}
+\RequirePackage{hyperref}
+\RequirePackage{booktabs}
+\RequirePackage{amsmath}
+\RequirePackage{graphicx}
+\RequirePackage{xcolor}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+\renewcommand{\baselinestretch}{0.97}
+
+\newcommand{\acksection}{\section*{Acknowledgments}}
+\renewenvironment{abstract}
+  {\centerline{\bf Abstract}\vspace{0.5em}\begin{quote}\small}
+  {\end{quote}\vspace{0.5em}}
+
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\LARGE\bfseries \@title \par}
+    \vspace{0.6em}
+    {\normalsize \@author \par}
+    \vspace{0.8em}
+  \end{center}
+}

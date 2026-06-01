@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 330" role="img" aria-label="Mean xG by season bar chart">
+  <rect width="760" height="330" fill="white"/>
+  <line x1="70" y1="260" x2="720" y2="260" stroke="#52606d"/>
+  <line x1="70" y1="40" x2="70" y2="260" stroke="#52606d"/>
+  <line x1="70" y1="55" x2="720" y2="55" stroke="#d9e2ec"/>
+  <line x1="70" y1="123" x2="720" y2="123" stroke="#d9e2ec"/>
+  <line x1="70" y1="191" x2="720" y2="191" stroke="#d9e2ec"/>
+  <text x="24" y="54" font-size="12" fill="#52606d">1.6</text>
+  <text x="24" y="123" font-size="12" fill="#52606d">1.4</text>
+  <text x="24" y="191" font-size="12" fill="#52606d">1.2</text>
+  <text x="20" y="263" font-size="12" fill="#52606d">1.0</text>
+  <rect x="105" y="160" width="80" height="100" fill="#0072b2"/>
+  <rect x="230" y="145" width="80" height="115" fill="#56b4e9"/>
+  <rect x="355" y="118" width="80" height="142" fill="#009e73"/>
+  <rect x="480" y="73" width="80" height="187" fill="#e69f00"/>
+  <rect x="605" y="118" width="80" height="142" fill="#d55e00"/>
+  <text x="145" y="286" text-anchor="middle" font-size="13">2021</text>
+  <text x="270" y="286" text-anchor="middle" font-size="13">2022</text>
+  <text x="395" y="286" text-anchor="middle" font-size="13">2023</text>
+  <text x="520" y="286" text-anchor="middle" font-size="13">2024</text>
+  <text x="645" y="286" text-anchor="middle" font-size="13">2025</text>
+  <text x="145" y="151" text-anchor="middle" font-size="12">1.295</text>
+  <text x="270" y="136" text-anchor="middle" font-size="12">1.339</text>
+  <text x="395" y="109" text-anchor="middle" font-size="12">1.419</text>
+  <text x="520" y="64" text-anchor="middle" font-size="12">1.550</text>
+  <text x="645" y="109" text-anchor="middle" font-size="12">1.417</text>
+  <text x="390" y="316" text-anchor="middle" font-size="13" fill="#52606d">Season</text>
+  <text x="18" y="150" transform="rotate(-90 18 150)" text-anchor="middle" font-size="13" fill="#52606d">Mean xG</text>
+</svg>

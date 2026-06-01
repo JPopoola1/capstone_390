@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 330" role="img" aria-label="Validation RMSE comparison bar chart">
+  <rect width="760" height="330" fill="white"/>
+  <line x1="85" y1="260" x2="720" y2="260" stroke="#52606d"/>
+  <line x1="85" y1="45" x2="85" y2="260" stroke="#52606d"/>
+  <line x1="85" y1="55" x2="720" y2="55" stroke="#d9e2ec"/>
+  <line x1="85" y1="125" x2="720" y2="125" stroke="#d9e2ec"/>
+  <line x1="85" y1="195" x2="720" y2="195" stroke="#d9e2ec"/>
+  <text x="32" y="56" font-size="12" fill="#52606d">0.86</text>
+  <text x="32" y="126" font-size="12" fill="#52606d">0.84</text>
+  <text x="32" y="196" font-size="12" fill="#52606d">0.82</text>
+  <rect x="125" y="191" width="90" height="69" fill="#0072b2"/>
+  <rect x="260" y="195" width="90" height="65" fill="#56b4e9"/>
+  <rect x="395" y="200" width="90" height="60" fill="#009e73"/>
+  <rect x="530" y="202" width="90" height="58" fill="#e69f00"/>
+  <text x="170" y="184" text-anchor="middle" font-size="12">0.8372</text>
+  <text x="305" y="188" text-anchor="middle" font-size="12">0.8311</text>
+  <text x="440" y="193" text-anchor="middle" font-size="12">0.8253</text>
+  <text x="575" y="195" text-anchor="middle" font-size="12">0.8212</text>
+  <text x="170" y="286" text-anchor="middle" font-size="12">Ridge</text>
+  <text x="305" y="286" text-anchor="middle" font-size="12">Voting</text>
+  <text x="440" y="286" text-anchor="middle" font-size="12">Batch2</text>
+  <text x="575" y="286" text-anchor="middle" font-size="12">Selected</text>
+  <text x="390" y="316" text-anchor="middle" font-size="13" fill="#52606d">Model stage</text>
+  <text x="20" y="155" transform="rotate(-90 20 155)" text-anchor="middle" font-size="13" fill="#52606d">Validation RMSE</text>
+</svg>

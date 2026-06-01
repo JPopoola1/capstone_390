@@ -1,0 +1,11 @@
+# Reflection Memo
+
+The most important lesson from this project was that a good leaderboard number is not the same thing as a trustworthy final result. The chronological split made the project stricter, because the model had to generalize from older seasons into a later season rather than seeing a random mix of the same time period. That made the validation process feel slower, but it protected the locked 2025 test set from leakage.
+
+The model search showed that simple ridge regression was a strong starting point, but a weighted Ridge plus ExtraTrees voting model performed better on validation. The improvements were incremental: tuning tree weight, leaf size, depth, and feature sampling moved RMSE down bit by bit. Some ideas that sounded promising, such as pairwise interactions and log-transforming the target, did not help. Keeping the full experiment record was useful because it made those dead ends visible instead of relying on memory.
+
+The final test RMSE was better than the selected model's validation RMSE, but the final R2 was still low. That changed how I interpret the project. The model is useful as a reproducible context-only xG predictor, but it should not be presented as a strong explanation of all xG variation. Match events, shot quality, player availability, tactical choices, and game state probably explain much more than travel distance alone.
+
+The biggest limitation is that the frozen AutoResearch design matrix did not include some columns that are highly connected to xG, such as shots and shots on target. That was reasonable for a context-only prediction workflow, but it limits the conclusions. In a future version, I would decide earlier whether the task is pre-match prediction or post-match explanation. Pre-match prediction would need richer pre-match variables. Post-match explanation could use shot features, but then the research question would need to be framed differently.
+
+Overall, the project became stronger once it separated three things: the scientific question about travel, the machine-learning goal of lowering validation RMSE, and the reporting responsibility of explaining what the model can and cannot support. The final deliverables preserve that separation: the repository keeps the code and logs, the final table reports the locked test result, and the report avoids overstating travel as a causal finding.

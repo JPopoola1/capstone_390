@@ -1,0 +1,466 @@
+commit	rmse	r2	status	description
+73ce573	0.841665	0.107158	baseline	baseline
+73ce573	0.838728	0.113378	keep	ridge alpha 10
+73ce573	0.837978	0.114963	keep	ridge alpha 100
+73ce573	0.837258	0.116484	keep	ridge alpha 300
+73ce573	0.839931	0.110833	keep	ridge alpha 1000
+73ce573	0.842871	0.104596	keep	elasticnet alpha 0.01 l1 0.2
+73ce573	0.880862	0.022060	keep	ridge with pairwise interactions
+73ce573	0.859952	0.067938	keep	gradient boosting shallow trees
+73ce573	0.841139	0.108273	keep	random forest regularized
+73ce573	0.837431	0.116117	keep	ridge alpha 500
+73ce573	0.837479	0.116017	keep	ridge alpha 200
+73ce573	0.837233	0.116537	keep	ridge alpha 350
+73ce573	0.837239	0.116524	keep	ridge alpha 375
+3e076ff	0.837233	0.116537	keep	rerun final ridge alpha 350
+120272b	0.837233	0.116537	baseline	dry run final ridge alpha 350
+120272b	0.837233	0.116537	keep	history-preserving dry run ridge alpha 350
+4307930	0.837233	0.116537	keep	dry run experiment set completion ridge alpha 350
+4307930	0.841665	0.107158	baseline	dry baseline hist gradient boosting restart
+4307930	0.837547	0.115873	discard	dry bayesian ridge learned shrinkage
+4307930	0.862785	0.061786	discard	dry huber robust regression
+4307930	0.855490	0.077585	discard	dry distance weighted knn 35
+4307930	0.836208	0.118698	keep	dry extra trees regularized
+4307930	0.857496	0.073254	discard	dry adaboost shallow trees
+4307930	0.845629	0.098728	discard	dry rbf kernel ridge
+4307930	0.837762	0.115419	discard	dry bagged ridge feature subsamples
+4307930	0.838050	0.114810	discard	dry tweedie log link xg
+4307930	0.831110	0.129411	keep	dry voting ridge extra trees
+4307930	0.830723	0.130221	keep	dry voting ridge extra trees even weights
+4307930	0.831067	0.129501	discard	dry voting ridge extra trees ridge heavy
+4307930	0.839036	0.112726	discard	dry stacked ridge extra trees passthrough
+a459bea	0.830654	0.130365	keep	ridge alpha 325
+a459bea	0.830524	0.130638	keep	ridge alpha 275
+a459bea	0.830405	0.130888	keep	ridge alpha 225
+a459bea	0.830298	0.131111	keep	ridge alpha 175
+a459bea	0.830206	0.131304	keep	ridge alpha 125
+a459bea	0.830131	0.131460	keep	ridge alpha 75
+a459bea	0.830077	0.131573	keep	ridge alpha 25
+a459bea	0.830066	0.131597	keep	ridge alpha 10
+a459bea	0.830060	0.131609	keep	ridge alpha 1
+a459bea	0.830059	0.131610	keep	ridge alpha 0.1
+a459bea	0.830059	0.131610	discard	ridge alpha 0.01
+9abdfad	0.843050	0.104218	discard	nonridge extra trees bootstrap shallow
+9abdfad	0.838390	0.114092	discard	nonridge hist gradient boosting l2 shallow
+9abdfad	0.859101	0.069783	discard	nonridge gradient boosting subsampled shallow
+9abdfad	0.840292	0.110069	discard	nonridge random forest regularized half features
+9abdfad	0.834509	0.122276	discard	nonridge voting trees hist gradient blend
+e4fdc25	0.830337	0.131030	discard	ridge-focused w_35
+e4fdc25	0.830095	0.131537	discard	ridge-focused w_40
+e4fdc25	0.830002	0.131730	keep	ridge-focused w_45
+e4fdc25	0.830059	0.131610	discard	ridge-focused w_50
+e4fdc25	0.830267	0.131176	discard	ridge-focused w_55
+e4fdc25	0.830624	0.130429	discard	ridge-focused w_60
+e4fdc25	0.831130	0.129368	discard	ridge-focused w_65
+e4fdc25	0.831786	0.127993	discard	ridge-focused w_70
+e4fdc25	0.832591	0.126305	discard	ridge-focused w_75
+e4fdc25	0.833544	0.124303	discard	ridge-focused w_80
+e4fdc25	17172171056781.832031	-371660752207029045894840320.000000	discard	ridge-focused alpha_0
+e4fdc25	0.830059	0.131610	discard	ridge-focused alpha_001
+e4fdc25	0.830059	0.131610	discard	ridge-focused alpha_01
+e4fdc25	0.830060	0.131609	discard	ridge-focused alpha_1
+e4fdc25	0.830062	0.131604	discard	ridge-focused alpha_5
+e4fdc25	0.830077	0.131573	discard	ridge-focused alpha_25
+e4fdc25	0.830072	0.131585	discard	ridge-focused tree_leaf_8
+e4fdc25	0.830187	0.131344	discard	ridge-focused tree_leaf_10
+e4fdc25	0.830261	0.131189	discard	ridge-focused tree_leaf_12
+e4fdc25	0.829748	0.132261	keep	ridge-focused tree_leaf_18
+e4fdc25	0.830584	0.130513	discard	ridge-focused tree_leaf_22
+e4fdc25	0.832287	0.126944	discard	ridge-focused tree_depth_8
+e4fdc25	0.831308	0.128995	discard	ridge-focused tree_depth_9
+e4fdc25	0.829051	0.133718	keep	ridge-focused tree_depth_11
+e4fdc25	0.828508	0.134853	keep	ridge-focused tree_depth_12
+e4fdc25	0.831620	0.128343	discard	ridge-focused tree_mf_50
+e4fdc25	0.831372	0.128861	discard	ridge-focused tree_mf_60
+e4fdc25	0.829948	0.131843	discard	ridge-focused tree_mf_80
+e4fdc25	0.829940	0.131860	discard	ridge-focused tree_mf_90
+e4fdc25	0.829718	0.132325	discard	ridge-focused tree_n_250
+e4fdc25	0.830219	0.131277	discard	ridge-focused tree_n_600
+e4fdc25	0.828571	0.134721	discard	ridge-focused robust_base
+e4fdc25	0.830229	0.131255	discard	ridge-focused w_45_leaf_12
+e4fdc25	0.829651	0.132465	discard	ridge-focused w_45_leaf_18
+e4fdc25	0.830444	0.130806	discard	ridge-focused w_55_leaf_12
+e4fdc25	0.829994	0.131747	discard	ridge-focused w_55_leaf_18
+e4fdc25	0.831739	0.128092	discard	ridge-focused w_60_mf_60
+e4fdc25	0.830480	0.130731	discard	ridge-focused w_60_mf_80
+e4fdc25	0.831571	0.128444	discard	ridge-focused w_40_mf_60
+e4fdc25	0.830044	0.131643	discard	ridge-focused w_40_mf_80
+e4fdc25	0.828508	0.134853	discard	final ridge extra trees depth 12
+5004d0a	0.828508	0.134853	discard	batch2 constants baseline ridge extra trees
+5004d0a	0.828667	0.134522	discard	batch2 tree weight 048
+5004d0a	0.828371	0.135140	keep	batch2 tree weight 052
+6311498	0.828255	0.135382	keep	batch2 tree weight 054
+f767a77	0.828160	0.135579	keep	batch2 tree weight 056
+1cc6f42	0.828087	0.135732	keep	batch2 tree weight 058
+5506b0a	0.828036	0.135840	keep	batch2 tree weight 060
+4db40c3	0.828005	0.135903	keep	batch2 tree weight 062
+c343ca0	0.827996	0.135921	keep	batch2 tree weight 064
+c02c4da	0.828009	0.135895	discard	batch2 tree weight 066
+c02c4da	0.827533	0.136889	keep	batch2 tree weight 064 leaf 14
+c73b49e	0.827533	0.136888	discard	batch2 tree weight 064 leaf 13
+c73b49e	0.827541	0.136872	discard	batch2 tree weight 064 leaf 12
+c73b49e	0.827345	0.137282	keep	batch2 tree weight 064 leaf 16
+d2ffeae	0.825859	0.140377	keep	batch2 tree weight 064 leaf 18
+1f38135	0.826835	0.138345	discard	batch2 tree weight 064 leaf 20
+1f38135	0.825927	0.140235	discard	batch2 tree weight 062 leaf 18
+1f38135	0.825813	0.140473	keep	batch2 tree weight 066 leaf 18
+2e95110	0.825252	0.141639	keep	batch2 tree weight 066 leaf 18 mf 075
+7523859	0.826001	0.140081	discard	batch2 tree weight 066 leaf 18 mf 080
+0fa7f4a	0.825273	0.141596	discard	batch3 tw 065 leaf 18 mf 075 depth 12 n 400 alpha 0.1 seed 42
+0fa7f4a	0.825237	0.141671	keep	batch3 tw 067 leaf 18 mf 075 depth 12 n 400 alpha 0.1 seed 42
+0fa7f4a	0.825228	0.141690	keep	batch3 tw 068 leaf 18 mf 075 depth 12 n 400 alpha 0.1 seed 42
+0fa7f4a	0.825224	0.141698	keep	batch3 tw 069 leaf 18 mf 075 depth 12 n 400 alpha 0.1 seed 42
+0fa7f4a	0.825226	0.141693	discard	batch3 tw 070 leaf 18 mf 075 depth 12 n 400 alpha 0.1 seed 42
+0fa7f4a	0.825248	0.141648	discard	batch3 tw 072 leaf 18 mf 075 depth 12 n 400 alpha 0.1 seed 42
+0fa7f4a	0.825811	0.140477	discard	batch3 tw 066 leaf 17 mf 075 depth 12 n 400 alpha 0.1 seed 42
+0fa7f4a	0.826943	0.138119	discard	batch3 tw 066 leaf 19 mf 075 depth 12 n 400 alpha 0.1 seed 42
+0fa7f4a	0.827024	0.137949	discard	batch3 tw 066 leaf 21 mf 075 depth 12 n 400 alpha 0.1 seed 42
+0fa7f4a	0.827375	0.137219	discard	batch3 tw 066 leaf 22 mf 075 depth 12 n 400 alpha 0.1 seed 42
+0fa7f4a	0.827073	0.137849	discard	batch3 tw 066 leaf 24 mf 075 depth 12 n 400 alpha 0.1 seed 42
+0fa7f4a	0.827035	0.137927	discard	batch3 tw 066 leaf 26 mf 075 depth 12 n 400 alpha 0.1 seed 42
+0fa7f4a	0.826445	0.139156	discard	batch3 tw 066 leaf 18 mf 072 depth 12 n 400 alpha 0.1 seed 42
+0fa7f4a	0.826445	0.139156	discard	batch3 tw 066 leaf 18 mf 073 depth 12 n 400 alpha 0.1 seed 42
+0fa7f4a	0.825045	0.142070	keep	batch3 tw 066 leaf 18 mf 074 depth 12 n 400 alpha 0.1 seed 42
+0fa7f4a	0.825252	0.141639	discard	batch3 tw 066 leaf 18 mf 076 depth 12 n 400 alpha 0.1 seed 42
+0fa7f4a	0.825248	0.141649	discard	batch3 tw 066 leaf 18 mf 077 depth 12 n 400 alpha 0.1 seed 42
+0fa7f4a	0.825248	0.141649	discard	batch3 tw 066 leaf 18 mf 078 depth 12 n 400 alpha 0.1 seed 42
+0fa7f4a	0.830332	0.131041	discard	batch3 tw 066 leaf 18 mf 075 depth 10 n 400 alpha 0.1 seed 42
+0fa7f4a	0.828335	0.135216	discard	batch3 tw 066 leaf 18 mf 075 depth 11 n 400 alpha 0.1 seed 42
+0fa7f4a	0.824841	0.142494	keep	batch3 tw 066 leaf 18 mf 075 depth 13 n 400 alpha 0.1 seed 42
+0fa7f4a	0.823380	0.145531	keep	batch3 tw 066 leaf 18 mf 075 depth 14 n 400 alpha 0.1 seed 42
+0fa7f4a	0.823113	0.146084	keep	batch3 tw 066 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 42
+0fa7f4a	0.823521	0.145238	discard	batch3 tw 066 leaf 18 mf 075 depth none n 400 alpha 0.1 seed 42
+0fa7f4a	0.825312	0.141514	discard	batch3 tw 066 leaf 18 mf 075 depth 12 n 250 alpha 0.1 seed 42
+0fa7f4a	0.825504	0.141116	discard	batch3 tw 066 leaf 18 mf 075 depth 12 n 300 alpha 0.1 seed 42
+0fa7f4a	0.825279	0.141584	discard	batch3 tw 066 leaf 18 mf 075 depth 12 n 500 alpha 0.1 seed 42
+0fa7f4a	0.825348	0.141440	discard	batch3 tw 066 leaf 18 mf 075 depth 12 n 600 alpha 0.1 seed 42
+0fa7f4a	0.825295	0.141550	discard	batch3 tw 066 leaf 18 mf 075 depth 12 n 800 alpha 0.1 seed 42
+0fa7f4a	0.825252	0.141640	discard	batch3 tw 066 leaf 18 mf 075 depth 12 n 400 alpha 0.01 seed 42
+0fa7f4a	0.825252	0.141639	discard	batch3 tw 066 leaf 18 mf 075 depth 12 n 400 alpha 0.05 seed 42
+0fa7f4a	0.825253	0.141638	discard	batch3 tw 066 leaf 18 mf 075 depth 12 n 400 alpha 0.5 seed 42
+0fa7f4a	0.825253	0.141637	discard	batch3 tw 066 leaf 18 mf 075 depth 12 n 400 alpha 1 seed 42
+0fa7f4a	0.825258	0.141627	discard	batch3 tw 066 leaf 18 mf 075 depth 12 n 400 alpha 5 seed 42
+0fa7f4a	0.825283	0.141576	discard	batch3 tw 066 leaf 18 mf 075 depth 12 n 400 alpha 25 seed 42
+0fa7f4a	0.826027	0.140027	discard	batch3 tw 066 leaf 18 mf 075 depth 12 n 400 alpha 0.1 seed 7
+0fa7f4a	0.825831	0.140435	discard	batch3 tw 066 leaf 18 mf 075 depth 12 n 400 alpha 0.1 seed 13
+0fa7f4a	0.825769	0.140564	discard	batch3 tw 066 leaf 18 mf 075 depth 12 n 400 alpha 0.1 seed 21
+0fa7f4a	0.825115	0.141924	discard	batch3 tw 066 leaf 18 mf 075 depth 12 n 400 alpha 0.1 seed 84
+0fa7f4a	0.825951	0.140186	discard	batch3 tw 066 leaf 18 mf 075 depth 12 n 400 alpha 0.1 seed 123
+0fa7f4a	0.825265	0.141614	discard	batch3 tw 067 leaf 18 mf 075 depth 12 n 500 alpha 0.1 seed 42
+0fa7f4a	0.825256	0.141632	discard	batch3 tw 068 leaf 18 mf 075 depth 12 n 500 alpha 0.1 seed 42
+0fa7f4a	0.825444	0.141240	discard	batch3 tw 066 leaf 18 mf 074 depth 12 n 500 alpha 0.1 seed 42
+0fa7f4a	0.825279	0.141584	discard	batch3 tw 066 leaf 18 mf 076 depth 12 n 500 alpha 0.1 seed 42
+0fa7f4a	0.826980	0.138042	discard	batch3 tw 067 leaf 19 mf 075 depth 12 n 500 alpha 0.1 seed 42
+0fa7f4a	0.825640	0.140833	discard	batch3 tw 067 leaf 17 mf 075 depth 12 n 500 alpha 0.1 seed 42
+0fa7f4a	0.828337	0.135211	discard	batch3 tw 067 leaf 18 mf 075 depth 11 n 500 alpha 0.1 seed 42
+0fa7f4a	0.824667	0.142857	discard	batch3 tw 067 leaf 18 mf 075 depth 13 n 500 alpha 0.1 seed 42
+0fa7f4a	0.825285	0.141571	discard	batch3 tw 067 leaf 18 mf 077 depth 12 n 500 alpha 0.1 seed 42
+0fa7f4a	0.826242	0.139579	discard	batch3 tw 067 leaf 18 mf 073 depth 12 n 500 alpha 0.1 seed 42
+0fa7f4a	0.826993	0.138014	discard	batch3 tw 068 leaf 19 mf 076 depth 12 n 500 alpha 0.1 seed 42
+0fa7f4a	0.824645	0.142903	discard	batch3 tw 068 leaf 18 mf 076 depth 13 n 500 alpha 0.1 seed 42
+0fa7f4a	0.824515	0.143172	discard	batch3 tw 067 leaf 18 mf 076 depth 13 n 600 alpha 0.05 seed 42
+0fa7f4a	0.825282	0.141577	discard	batch3 tw 068 leaf 18 mf 074 depth 12 n 600 alpha 0.05 seed 42
+0fa7f4a	0.826084	0.139909	discard	batch3 tw 067 leaf 19 mf 074 depth 13 n 600 alpha 0.05 seed 42
+ce4f0f8	0.825450	0.141229	discard	batch4 tw 62 leaf 16 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.823643	0.144985	discard	batch4 tw 62 leaf 18 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824996	0.142172	discard	batch4 tw 62 leaf 20 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.825341	0.141454	discard	batch4 tw 64 leaf 16 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.823500	0.145281	discard	batch4 tw 64 leaf 18 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824896	0.142381	discard	batch4 tw 64 leaf 20 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.825254	0.141636	discard	batch4 tw 66 leaf 16 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.823380	0.145531	discard	batch4 tw 66 leaf 18 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824817	0.142545	discard	batch4 tw 66 leaf 20 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.825186	0.141777	discard	batch4 tw 68 leaf 16 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.823281	0.145735	discard	batch4 tw 68 leaf 18 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824760	0.142663	discard	batch4 tw 68 leaf 20 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.825139	0.141874	discard	batch4 tw 70 leaf 16 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.823204	0.145894	discard	batch4 tw 70 leaf 18 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824725	0.142736	discard	batch4 tw 70 leaf 20 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.826148	0.139776	discard	batch4 tw 62 leaf 16 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.823402	0.145484	discard	batch4 tw 62 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824715	0.142756	discard	batch4 tw 62 leaf 20 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.826056	0.139966	discard	batch4 tw 64 leaf 16 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.823247	0.145807	discard	batch4 tw 64 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824595	0.143006	discard	batch4 tw 64 leaf 20 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.825985	0.140115	discard	batch4 tw 66 leaf 16 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.823113	0.146084	keep	batch4 tw 66 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824496	0.143212	discard	batch4 tw 66 leaf 20 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.825934	0.140222	discard	batch4 tw 68 leaf 16 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.823001	0.146317	keep	batch4 tw 68 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824418	0.143374	discard	batch4 tw 68 leaf 20 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.825902	0.140287	discard	batch4 tw 70 leaf 16 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.822910	0.146505	keep	batch4 tw 70 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824362	0.143491	discard	batch4 tw 70 leaf 20 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.826777	0.138465	discard	batch4 tw 62 leaf 16 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.823652	0.144965	discard	batch4 tw 62 leaf 18 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.825244	0.141657	discard	batch4 tw 62 leaf 20 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.826698	0.138629	discard	batch4 tw 64 leaf 16 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.823498	0.145286	discard	batch4 tw 64 leaf 18 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.825137	0.141879	discard	batch4 tw 64 leaf 20 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.826639	0.138752	discard	batch4 tw 66 leaf 16 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.823365	0.145561	discard	batch4 tw 66 leaf 18 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.825051	0.142058	discard	batch4 tw 66 leaf 20 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.826599	0.138835	discard	batch4 tw 68 leaf 16 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.823253	0.145793	discard	batch4 tw 68 leaf 18 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824986	0.142193	discard	batch4 tw 68 leaf 20 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.826579	0.138877	discard	batch4 tw 70 leaf 16 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.823163	0.145981	discard	batch4 tw 70 leaf 18 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824942	0.142284	discard	batch4 tw 70 leaf 20 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.826713	0.138598	discard	batch4 tw 62 leaf 16 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824397	0.143419	discard	batch4 tw 62 leaf 18 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.825983	0.140119	discard	batch4 tw 62 leaf 20 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.826629	0.138774	discard	batch4 tw 64 leaf 16 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824264	0.143694	discard	batch4 tw 64 leaf 18 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.825895	0.140302	discard	batch4 tw 64 leaf 20 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.826563	0.138910	discard	batch4 tw 66 leaf 16 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824153	0.143925	discard	batch4 tw 66 leaf 18 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.825828	0.140442	discard	batch4 tw 66 leaf 20 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.826517	0.139006	discard	batch4 tw 68 leaf 16 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824062	0.144113	discard	batch4 tw 68 leaf 18 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.825781	0.140540	discard	batch4 tw 68 leaf 20 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.826490	0.139062	discard	batch4 tw 70 leaf 16 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.823993	0.144257	discard	batch4 tw 70 leaf 18 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.825755	0.140594	discard	batch4 tw 70 leaf 20 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.827523	0.136909	discard	batch4 tw 62 leaf 16 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824637	0.142920	discard	batch4 tw 62 leaf 18 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.826039	0.140002	discard	batch4 tw 62 leaf 20 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.827456	0.137049	discard	batch4 tw 64 leaf 16 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824505	0.143193	discard	batch4 tw 64 leaf 18 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.825949	0.140190	discard	batch4 tw 64 leaf 20 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.827408	0.137150	discard	batch4 tw 66 leaf 16 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824394	0.143424	discard	batch4 tw 66 leaf 18 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.825879	0.140335	discard	batch4 tw 66 leaf 20 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.827378	0.137212	discard	batch4 tw 68 leaf 16 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824303	0.143613	discard	batch4 tw 68 leaf 18 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.825829	0.140439	discard	batch4 tw 68 leaf 20 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.827367	0.137234	discard	batch4 tw 70 leaf 16 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824233	0.143758	discard	batch4 tw 70 leaf 18 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.825800	0.140500	discard	batch4 tw 70 leaf 20 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.827460	0.137041	discard	batch4 tw 62 leaf 16 mf 075 depth 19 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824585	0.143027	discard	batch4 tw 62 leaf 18 mf 075 depth 19 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.825179	0.141793	discard	batch4 tw 62 leaf 20 mf 075 depth 19 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.827394	0.137179	discard	batch4 tw 64 leaf 16 mf 075 depth 19 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824446	0.143316	discard	batch4 tw 64 leaf 18 mf 075 depth 19 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.825053	0.142053	discard	batch4 tw 64 leaf 20 mf 075 depth 19 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.827347	0.137277	discard	batch4 tw 66 leaf 16 mf 075 depth 19 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824327	0.143564	discard	batch4 tw 66 leaf 18 mf 075 depth 19 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824948	0.142272	discard	batch4 tw 66 leaf 20 mf 075 depth 19 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.827319	0.137336	discard	batch4 tw 68 leaf 16 mf 075 depth 19 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824228	0.143769	discard	batch4 tw 68 leaf 18 mf 075 depth 19 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824863	0.142450	discard	batch4 tw 68 leaf 20 mf 075 depth 19 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.827309	0.137355	discard	batch4 tw 70 leaf 16 mf 075 depth 19 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824149	0.143933	discard	batch4 tw 70 leaf 18 mf 075 depth 19 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824797	0.142586	discard	batch4 tw 70 leaf 20 mf 075 depth 19 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.827029	0.137940	discard	batch4 tw 62 leaf 16 mf 075 depth 20 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824163	0.143904	discard	batch4 tw 62 leaf 18 mf 075 depth 20 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.825107	0.141942	discard	batch4 tw 62 leaf 20 mf 075 depth 20 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.826945	0.138114	discard	batch4 tw 64 leaf 16 mf 075 depth 20 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824005	0.144232	discard	batch4 tw 64 leaf 18 mf 075 depth 20 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824976	0.142215	discard	batch4 tw 64 leaf 20 mf 075 depth 20 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.826881	0.138248	discard	batch4 tw 66 leaf 16 mf 075 depth 20 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.823867	0.144518	discard	batch4 tw 66 leaf 18 mf 075 depth 20 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.824865	0.142446	discard	batch4 tw 66 leaf 20 mf 075 depth 20 n 400 alpha 0.1 seed 42 inter none
+ce4f0f8	0.826835	0.138343	discard	batch4 tw 68 leaf 16 mf 075 depth 20 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823094	0.146124	discard	batch5 tw 68 leaf 17 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823281	0.145735	discard	batch5 tw 68 leaf 18 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825091	0.141974	discard	batch5 tw 68 leaf 19 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824760	0.142663	discard	batch5 tw 68 leaf 20 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823001	0.146316	discard	batch5 tw 70 leaf 17 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823204	0.145894	discard	batch5 tw 70 leaf 18 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825067	0.142025	discard	batch5 tw 70 leaf 19 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824725	0.142736	discard	batch5 tw 70 leaf 20 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822929	0.146465	discard	batch5 tw 72 leaf 17 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823150	0.146007	discard	batch5 tw 72 leaf 18 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825064	0.142031	discard	batch5 tw 72 leaf 19 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824712	0.142763	discard	batch5 tw 72 leaf 20 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822879	0.146569	keep	batch5 tw 74 leaf 17 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823117	0.146075	discard	batch5 tw 74 leaf 18 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825084	0.141990	discard	batch5 tw 74 leaf 19 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824721	0.142745	discard	batch5 tw 74 leaf 20 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822851	0.146628	keep	batch5 tw 76 leaf 17 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823107	0.146097	discard	batch5 tw 76 leaf 18 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825125	0.141905	discard	batch5 tw 76 leaf 19 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824751	0.142681	discard	batch5 tw 76 leaf 20 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822843	0.146644	keep	batch5 tw 78 leaf 17 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823118	0.146073	discard	batch5 tw 78 leaf 18 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825188	0.141774	discard	batch5 tw 78 leaf 19 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824804	0.142572	discard	batch5 tw 78 leaf 20 mf 075 depth 14 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.821713	0.148987	keep	batch5 tw 68 leaf 17 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823001	0.146317	discard	batch5 tw 68 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825149	0.141855	discard	batch5 tw 68 leaf 19 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824418	0.143374	discard	batch5 tw 68 leaf 20 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.821568	0.149286	keep	batch5 tw 70 leaf 17 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822910	0.146505	discard	batch5 tw 70 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825114	0.141928	discard	batch5 tw 70 leaf 19 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824362	0.143491	discard	batch5 tw 70 leaf 20 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.821444	0.149543	keep	batch5 tw 72 leaf 17 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822841	0.146647	discard	batch5 tw 72 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825100	0.141957	discard	batch5 tw 72 leaf 19 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824326	0.143565	discard	batch5 tw 72 leaf 20 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.821341	0.149756	keep	batch5 tw 74 leaf 17 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822794	0.146745	discard	batch5 tw 74 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825107	0.141942	discard	batch5 tw 74 leaf 19 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824312	0.143595	discard	batch5 tw 74 leaf 20 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.821259	0.149926	keep	batch5 tw 76 leaf 17 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822769	0.146798	discard	batch5 tw 76 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825135	0.141883	discard	batch5 tw 76 leaf 19 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824319	0.143580	discard	batch5 tw 76 leaf 20 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.821198	0.150054	keep	batch5 tw 78 leaf 17 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822765	0.146805	discard	batch5 tw 78 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825184	0.141781	discard	batch5 tw 78 leaf 19 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824347	0.143521	discard	batch5 tw 78 leaf 20 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822688	0.146966	discard	batch5 tw 68 leaf 17 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823253	0.145793	discard	batch5 tw 68 leaf 18 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825144	0.141865	discard	batch5 tw 68 leaf 19 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824986	0.142193	discard	batch5 tw 68 leaf 20 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822565	0.147221	discard	batch5 tw 70 leaf 17 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823163	0.145981	discard	batch5 tw 70 leaf 18 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825102	0.141952	discard	batch5 tw 70 leaf 19 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824942	0.142284	discard	batch5 tw 70 leaf 20 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822462	0.147434	discard	batch5 tw 72 leaf 17 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823093	0.146125	discard	batch5 tw 72 leaf 18 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825080	0.141997	discard	batch5 tw 72 leaf 19 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824919	0.142332	discard	batch5 tw 72 leaf 20 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822380	0.147604	discard	batch5 tw 74 leaf 17 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823045	0.146224	discard	batch5 tw 74 leaf 18 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825080	0.141998	discard	batch5 tw 74 leaf 19 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824917	0.142336	discard	batch5 tw 74 leaf 20 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822318	0.147733	discard	batch5 tw 76 leaf 17 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823019	0.146280	discard	batch5 tw 76 leaf 18 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825100	0.141956	discard	batch5 tw 76 leaf 19 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824936	0.142297	discard	batch5 tw 76 leaf 20 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822276	0.147819	discard	batch5 tw 78 leaf 17 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823013	0.146291	discard	batch5 tw 78 leaf 18 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825141	0.141871	discard	batch5 tw 78 leaf 19 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824976	0.142214	discard	batch5 tw 78 leaf 20 mf 075 depth 16 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825081	0.141996	discard	batch5 tw 68 leaf 17 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824062	0.144113	discard	batch5 tw 68 leaf 18 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825852	0.140390	discard	batch5 tw 68 leaf 19 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825781	0.140540	discard	batch5 tw 68 leaf 20 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825023	0.142117	discard	batch5 tw 70 leaf 17 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823993	0.144257	discard	batch5 tw 70 leaf 18 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825827	0.140444	discard	batch5 tw 70 leaf 19 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825755	0.140594	discard	batch5 tw 70 leaf 20 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824984	0.142197	discard	batch5 tw 72 leaf 17 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823945	0.144357	discard	batch5 tw 72 leaf 18 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825821	0.140455	discard	batch5 tw 72 leaf 19 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825749	0.140606	discard	batch5 tw 72 leaf 20 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824966	0.142235	discard	batch5 tw 74 leaf 17 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823918	0.144413	discard	batch5 tw 74 leaf 18 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825837	0.140423	discard	batch5 tw 74 leaf 19 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825764	0.140575	discard	batch5 tw 74 leaf 20 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824968	0.142231	discard	batch5 tw 76 leaf 17 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823912	0.144425	discard	batch5 tw 76 leaf 18 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825872	0.140349	discard	batch5 tw 76 leaf 19 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825800	0.140501	discard	batch5 tw 76 leaf 20 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824990	0.142186	discard	batch5 tw 78 leaf 17 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823927	0.144394	discard	batch5 tw 78 leaf 18 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825929	0.140232	discard	batch5 tw 78 leaf 19 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825856	0.140384	discard	batch5 tw 78 leaf 20 mf 075 depth 17 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824608	0.142979	discard	batch5 tw 68 leaf 17 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824303	0.143613	discard	batch5 tw 68 leaf 18 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825599	0.140918	discard	batch5 tw 68 leaf 19 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825829	0.140439	discard	batch5 tw 68 leaf 20 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824533	0.143135	discard	batch5 tw 70 leaf 17 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824233	0.143758	discard	batch5 tw 70 leaf 18 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825562	0.140996	discard	batch5 tw 70 leaf 19 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825800	0.140500	discard	batch5 tw 70 leaf 20 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824478	0.143249	discard	batch5 tw 72 leaf 17 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824184	0.143860	discard	batch5 tw 72 leaf 18 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825544	0.141032	discard	batch5 tw 72 leaf 19 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825791	0.140518	discard	batch5 tw 72 leaf 20 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824443	0.143323	discard	batch5 tw 74 leaf 17 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824155	0.143920	discard	batch5 tw 74 leaf 18 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825548	0.141025	discard	batch5 tw 74 leaf 19 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825803	0.140494	discard	batch5 tw 74 leaf 20 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824427	0.143355	discard	batch5 tw 76 leaf 17 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824147	0.143936	discard	batch5 tw 76 leaf 18 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825571	0.140976	discard	batch5 tw 76 leaf 19 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825834	0.140428	discard	batch5 tw 76 leaf 20 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824432	0.143345	discard	batch5 tw 78 leaf 17 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.824160	0.143910	discard	batch5 tw 78 leaf 18 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825615	0.140885	discard	batch5 tw 78 leaf 19 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.825886	0.140320	discard	batch5 tw 78 leaf 20 mf 075 depth 18 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823481	0.145320	discard	batch5 tw 68 leaf 18 mf 68 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823380	0.145531	discard	batch5 tw 70 leaf 18 mf 68 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823298	0.145700	discard	batch5 tw 72 leaf 18 mf 68 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823895	0.144460	discard	batch5 tw 68 leaf 18 mf 70 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823814	0.144628	discard	batch5 tw 70 leaf 18 mf 70 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823754	0.144753	discard	batch5 tw 72 leaf 18 mf 70 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823955	0.144336	discard	batch5 tw 68 leaf 18 mf 72 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823886	0.144480	discard	batch5 tw 70 leaf 18 mf 72 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823837	0.144580	discard	batch5 tw 72 leaf 18 mf 72 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823312	0.145671	discard	batch5 tw 68 leaf 18 mf 74 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823219	0.145864	discard	batch5 tw 70 leaf 18 mf 74 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823147	0.146014	discard	batch5 tw 72 leaf 18 mf 74 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823001	0.146317	discard	batch5 tw 68 leaf 18 mf 76 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822910	0.146505	discard	batch5 tw 70 leaf 18 mf 76 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822841	0.146647	discard	batch5 tw 72 leaf 18 mf 76 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822583	0.147183	discard	batch5 tw 68 leaf 18 mf 78 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822488	0.147381	discard	batch5 tw 70 leaf 18 mf 78 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822414	0.147533	discard	batch5 tw 72 leaf 18 mf 78 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822909	0.146507	discard	batch5 tw 68 leaf 18 mf 80 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822826	0.146679	discard	batch5 tw 70 leaf 18 mf 80 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822765	0.146806	discard	batch5 tw 72 leaf 18 mf 80 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822840	0.146651	discard	batch5 tw 68 leaf 18 mf 82 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822760	0.146817	discard	batch5 tw 70 leaf 18 mf 82 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822702	0.146936	discard	batch5 tw 72 leaf 18 mf 82 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822755	0.146827	discard	batch5 tw 68 leaf 18 mf 85 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822684	0.146973	discard	batch5 tw 70 leaf 18 mf 85 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822637	0.147071	discard	batch5 tw 72 leaf 18 mf 85 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822736	0.146866	discard	batch5 tw 68 leaf 18 mf 90 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822693	0.146955	discard	batch5 tw 70 leaf 18 mf 90 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822675	0.146993	discard	batch5 tw 72 leaf 18 mf 90 depth 15 n 400 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823228	0.145845	discard	batch5 tw 68 leaf 18 mf 075 depth 15 n 250 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823143	0.146022	discard	batch5 tw 70 leaf 18 mf 075 depth 15 n 250 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823079	0.146155	discard	batch5 tw 72 leaf 18 mf 075 depth 15 n 250 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823041	0.146234	discard	batch5 tw 68 leaf 18 mf 075 depth 15 n 300 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822950	0.146421	discard	batch5 tw 70 leaf 18 mf 075 depth 15 n 300 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822881	0.146564	discard	batch5 tw 72 leaf 18 mf 075 depth 15 n 300 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823224	0.145853	discard	batch5 tw 68 leaf 18 mf 075 depth 15 n 350 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823139	0.146029	discard	batch5 tw 70 leaf 18 mf 075 depth 15 n 350 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823076	0.146161	discard	batch5 tw 72 leaf 18 mf 075 depth 15 n 350 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822906	0.146514	discard	batch5 tw 68 leaf 18 mf 075 depth 15 n 450 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822814	0.146705	discard	batch5 tw 70 leaf 18 mf 075 depth 15 n 450 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822743	0.146851	discard	batch5 tw 72 leaf 18 mf 075 depth 15 n 450 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822959	0.146404	discard	batch5 tw 68 leaf 18 mf 075 depth 15 n 500 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822869	0.146591	discard	batch5 tw 70 leaf 18 mf 075 depth 15 n 500 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822800	0.146732	discard	batch5 tw 72 leaf 18 mf 075 depth 15 n 500 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822942	0.146438	discard	batch5 tw 68 leaf 18 mf 075 depth 15 n 600 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822850	0.146629	discard	batch5 tw 70 leaf 18 mf 075 depth 15 n 600 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822780	0.146774	discard	batch5 tw 72 leaf 18 mf 075 depth 15 n 600 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823021	0.146274	discard	batch5 tw 68 leaf 18 mf 075 depth 15 n 700 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822931	0.146462	discard	batch5 tw 70 leaf 18 mf 075 depth 15 n 700 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822862	0.146604	discard	batch5 tw 72 leaf 18 mf 075 depth 15 n 700 alpha 0.1 seed 42 inter none
+9c1d4f3	0.823023	0.146271	discard	batch5 tw 68 leaf 18 mf 075 depth 15 n 900 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822929	0.146465	discard	batch5 tw 70 leaf 18 mf 075 depth 15 n 900 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822857	0.146615	discard	batch5 tw 72 leaf 18 mf 075 depth 15 n 900 alpha 0.1 seed 42 inter none
+9c1d4f3	0.822936	0.146451	discard	batch5 tw 68 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 2 inter none
+9c1d4f3	0.822836	0.146659	discard	batch5 tw 70 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 2 inter none
+9c1d4f3	0.822757	0.146822	discard	batch5 tw 72 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 2 inter none
+9c1d4f3	0.823096	0.146119	discard	batch5 tw 68 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 3 inter none
+9c1d4f3	0.823006	0.146306	discard	batch5 tw 70 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 3 inter none
+9c1d4f3	0.822937	0.146449	discard	batch5 tw 72 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 3 inter none
+9c1d4f3	0.823064	0.146186	discard	batch5 tw 68 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 5 inter none
+9c1d4f3	0.822967	0.146386	discard	batch5 tw 70 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 5 inter none
+9c1d4f3	0.822892	0.146542	discard	batch5 tw 72 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 5 inter none
+9c1d4f3	0.823302	0.145691	discard	batch5 tw 68 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 7 inter none
+9c1d4f3	0.823213	0.145877	discard	batch5 tw 70 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 7 inter none
+9c1d4f3	0.823144	0.146019	discard	batch5 tw 72 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 7 inter none
+9c1d4f3	0.823573	0.145129	discard	batch5 tw 68 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 11 inter none
+9c1d4f3	0.823491	0.145299	discard	batch5 tw 70 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 11 inter none
+9c1d4f3	0.823430	0.145425	discard	batch5 tw 72 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 11 inter none
+9c1d4f3	0.823398	0.145493	discard	batch5 tw 68 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 13 inter none
+9c1d4f3	0.823311	0.145672	discard	batch5 tw 70 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 13 inter none
+9c1d4f3	0.823246	0.145807	discard	batch5 tw 72 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 13 inter none
+9c1d4f3	0.823169	0.145967	discard	batch5 tw 68 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 17 inter none
+9c1d4f3	0.823079	0.146154	discard	batch5 tw 70 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 17 inter none
+9c1d4f3	0.823010	0.146298	discard	batch5 tw 72 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 17 inter none
+9c1d4f3	0.822490	0.147376	discard	batch5 tw 68 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 19 inter none
+9c1d4f3	0.822386	0.147591	discard	batch5 tw 70 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 19 inter none
+9c1d4f3	0.822305	0.147760	discard	batch5 tw 72 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 19 inter none
+9c1d4f3	0.823149	0.146009	discard	batch5 tw 68 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 21 inter none
+9c1d4f3	0.823063	0.146187	discard	batch5 tw 70 leaf 18 mf 075 depth 15 n 400 alpha 0.1 seed 21 inter none
+01dfedb	0.828077	0.135753	discard	extra trees poisson criterion
+01dfedb	0.860649	0.066427	discard	log1p target transform
+01dfedb	0.820630	0.151229	keep	maxabs scaler for one hot design

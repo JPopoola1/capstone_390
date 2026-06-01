@@ -1,0 +1,108 @@
+\documentclass{article}
+\usepackage[preprint]{neurips_2024}
+
+\title{Predicting Premier League Expected Goals from Venue, Travel, and Team Context}
+\author{Jordan Popoola\\Capstone 390\\\texttt{https://github.com/JPopoola1/capstone_390}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This project studied whether home/away status and away travel distance help predict Premier League attacking performance, measured by expected goals (xG). The final workflow used a chronological split to avoid leakage: seasons 2021--2023 for training, 2024 for validation, and the full 2025 season as a locked test set. The best selected model was a scikit-learn pipeline combining interaction handling, standard scaling, ridge regression, and an ExtraTrees regressor in a weighted voting ensemble. Across five repeated locked-test evaluations, the model produced identical RMSE of 0.792404 and $R^2$ of 0.064477 on 760 held-out 2025 rows. The result improved over the early linear baseline, but the low $R^2$ shows that the allowed features capture only a modest fraction of match-level xG variation.
+\end{abstract}
+
+\section{Introduction}
+Expected goals is a continuous measure of chance quality and attacking output. The capstone question was: how does travel distance affect a soccer team's offensive and defensive performance when measured by expected goals? The modeling task narrowed this question to predicting team-match xG from a constrained feature set: home/away indicator, away travel distance for away teams, team identity, opponent identity, and season indicators.
+
+The project emphasized leakage control. A chronological design was chosen because soccer performance changes by season and because using future matches during model selection would overstate performance. The locked test set policy held the 2025 season out until final evaluation. Model search used the 2024 validation season only.
+
+\section{Data and Experimental Design}
+The processed dataset contains 3,800 team-match rows, with 760 observations per season from 2021 through 2025. Mean xG increased from 1.295 in 2021 to 1.550 in 2024, then returned to 1.417 in 2025. This season-level drift made chronological validation important: random splits would mix seasons and blur the deployment-like setting.
+
+\begin{table}[h]
+\centering
+\caption{Chronological split used throughout the project.}
+\begin{tabular}{llll}
+\toprule
+Split & Seasons & Rows & Role \\
+\midrule
+Train & 2021--2023 & 2,280 & Fit model parameters \\
+Validation & 2024 & 760 & Select model family and hyperparameters \\
+Locked test & 2025 & 760 & Final evaluation only \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Exploratory analysis showed that xG is noisy at the team-match level. The target had mean 1.404, standard deviation 0.828, and a range from 0.000 to 7.000. Shots and shots on target are present in the processed CSV, but the frozen preparation code did not pass those post-match statistics into the model design matrix. This was an important modeling constraint: the final model estimates xG from contextual variables, not from direct shot-volume evidence.
+
+\clearpage
+\section{Modeling Approach}
+The final scikit-learn estimator is implemented in \texttt{autoresearch/model.py}. It returns a \texttt{Pipeline} with three stages: optional engineered interactions, \texttt{StandardScaler}, and a \texttt{VotingRegressor}. The voting ensemble combines \texttt{Ridge(alpha=0.1)} with an \texttt{ExtraTreesRegressor} using 400 trees, maximum depth 15, minimum leaf size 17, feature sampling of 0.75, and random seed 42. The final selected validation configuration weighted ExtraTrees at 0.78 and Ridge at 0.22.
+
+This design reflects two useful inductive biases. Ridge regression provides a stable linear baseline over sparse one-hot team and opponent indicators. ExtraTrees adds nonlinear structure and can capture interactions such as team strength depending on opponent and season context. The voting ensemble reduced validation RMSE more reliably than either broad model family alone.
+
+\begin{table}[h]
+\centering
+\caption{Representative validation experiments. Lower RMSE is better.}
+\begin{tabular}{lrrl}
+\toprule
+Experiment & Validation RMSE & Validation $R^2$ & Outcome \\
+\midrule
+Initial baseline & 0.841665 & 0.107158 & Reference \\
+Ridge alpha 350 & 0.837233 & 0.116537 & Best controlled ridge sweep \\
+Voting ridge + ExtraTrees & 0.831110 & 0.129411 & Major improvement \\
+Batch2 tree weight 0.66, leaf 18, mf 0.75 & 0.825252 & 0.141639 & Improvement \\
+Batch5 tw 78 leaf 17 depth 15 & 0.821198 & 0.150054 & Selected locked-test model \\
+MaxAbsScaler one-hot variant & 0.820630 & 0.151229 & Best logged validation, not final code \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The full record contains 465 logged AutoResearch runs. Most experiments varied one of a few axes: ridge regularization, tree weight, minimum leaf size, maximum depth, feature sampling, number of estimators, random seed, or interaction mode. Failed directions included pairwise interactions, shallow gradient boosting, robust regression, KNN-style distance weighting, log-target transformation, and Poisson ExtraTrees.
+
+\clearpage
+\section{Final Results}
+The selected locked-test model was \texttt{batch5 tw 78 leaf 17 mf 075 depth 15 n 400 alpha 0.1 seed 42 inter none}. It was evaluated five times on the full 2025 test season. The metrics were identical across runs, indicating deterministic behavior under the fixed seed and single-threaded tree configuration.
+
+\begin{table}[h]
+\centering
+\caption{Locked 2025 test-set results.}
+\begin{tabular}{lrrrr}
+\toprule
+Model & Train rows & Test rows & Test RMSE & Test $R^2$ \\
+\midrule
+Selected voting model & 2,280 & 760 & 0.792404 & 0.064477 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Repeated final test evaluations.}
+\begin{tabular}{rrrr}
+\toprule
+Run & RMSE & $R^2$ & Train time seconds \\
+\midrule
+1 & 0.792404 & 0.064477 & 0.970434 \\
+2 & 0.792404 & 0.064477 & 0.950336 \\
+3 & 0.792404 & 0.064477 & 0.948985 \\
+4 & 0.792404 & 0.064477 & 0.951640 \\
+5 & 0.792404 & 0.064477 & 0.970791 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The validation-to-test shift is favorable: validation RMSE for the selected model was 0.821198, while locked-test RMSE was 0.792404. This does not mean the model learned a strong causal effect of travel. Instead, it suggests that 2025 was somewhat easier to predict from the contextual feature set than the 2024 validation season. The low final $R^2$ remains the clearest limitation. Context, team, opponent, and travel explain some variation, but much of xG depends on match events and tactical details unavailable to the frozen design matrix.
+
+\clearpage
+\section{Discussion and Limitations}
+The strongest evidence from the project is practical rather than causal. The project produced a reproducible, leakage-aware prediction workflow and a clear experiment trail. The final model is fast, deterministic, and easy to rerun. It also improved materially over the first baseline validation score.
+
+The substantive travel-distance finding is cautious. Travel was included in the model, but the best-performing pipeline relied heavily on team and opponent context plus a nonlinear ensemble. The early ordinary least squares baseline found that adding travel distance slightly worsened validation RMSE for xG while modestly improving xGA. Under the final predictive setup, travel may contribute to splits in the trees, but the report should not claim a standalone causal travel penalty.
+
+The main limitation is feature availability. Shot count, shots on target, and other match-event variables are highly related to xG, but using them for prediction can be conceptually problematic if the goal is pre-match or context-only forecasting. The frozen AutoResearch design also excluded them from the design matrix. Future work should define the prediction timing explicitly: pre-match forecasting should add richer pre-match covariates, while post-match xG explanation could include shot features and tactical summaries.
+
+\section{Reproducibility}
+The cleaned repository is available at \url{https://github.com/JPopoola1/capstone_390}. The complete experiment record is saved as \texttt{deliverables/full\_experiment\_record.tsv}; the locked final result table is saved as \texttt{deliverables/final\_results\_table.tsv}. The final model code is in \texttt{autoresearch/model.py}; data preparation and split policy are documented in \texttt{autoresearch/prepare.py} and \texttt{LOCKED\_TEST\_PLAN.md}.
+
+\end{document}
